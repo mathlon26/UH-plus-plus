@@ -4,6 +4,7 @@
   "description": "UHasselt++ is a chrome extension which gives a new look to the student files and allows a user to personalize the website's theme.",
   "manifest_version": 3,
   "permissions": ["activeTab", "cookies", "scripting", "storage"],
+  "options_page": "html/settings.html",
   "action": {
     "default_popup": "html/popup.html",
     "default_icon": "images/icon-128.png"

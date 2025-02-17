@@ -1,11 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UHasselt++ | Settings</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>UHasselt++ | Settings</title>
+
+        <!-- Tailwind CSS -->
+        <link href="../css/compiled.css" rel="stylesheet">
+    </head>
+    <body class=" max-h-screen">
+        <div class="flex flex-col bg-gray-100 p-6">
+            <!-- Header Section -->
+            <div class="flex items-center justify-center space-x-2 mb-6  max-h-screen">
+                <h1 class="text-3xl font-bold text-gray-800">UHasselt++</h1>
+                <h1 class="text-3xl font-bold text-gray-800">Settings</h1>
+
+            </div>
+
+            <!-- Settings Form Section -->
+            <main class="flex flex-col space-y-4">
+
+                <!-- Username Display -->
+                <div class="flex items-center justify-center space-x-2 text-xl">
+                    <h2>Welcome, <span id="usernameDisplay">Mathijs Follon</span></h2>
+                </div>
+
+                <!-- Placeholder Settings -->
+                <div class="flex-col items-center justify-center mx-auto space-y-4 bg-white p-8 rounded-4xl max-w-[800px] overflow-y-scroll">
+                    <!-- Setting 1: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting1" class="w-1/2">Enable Feature X</label>
+                        <input type="checkbox" id="setting1" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 2: Select Box -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting2" class="w-1/2">Choose Your Language</label>
+                        <select id="setting2" class="form-select">
+                            <option value="en">English</option>
+                            <option value="nl">Dutch</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                        </select>
+                    </div>
+
+                    <!-- Setting 3: Text Input -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting3" class="w-1/2">Your Username</label>
+                        <input type="text" id="setting3" class="form-input" placeholder="Enter username" />
+                    </div>
+
+                    <!-- Setting 4: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting4" class="w-1/2">Enable Dark Mode</label>
+                        <input type="checkbox" id="setting4" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 5: Select Box -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting5" class="w-1/2">Choose Font Size</label>
+                        <select id="setting5" class="form-select">
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+
+                    <!-- Setting 6: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting6" class="w-1/2">Enable Notifications</label>
+                        <input type="checkbox" id="setting6" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 7: Input Box (Number) -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting7" class="w-1/2">Max Items to Display</label>
+                        <input type="number" id="setting7" class="form-input" placeholder="10" />
+                    </div>
+
+                    <!-- Setting 8: Textarea Input -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting8" class="w-1/2">User Bio</label>
+                        <textarea id="setting8" class="form-textarea" placeholder="Enter your bio"></textarea>
+                    </div>
+
+                    <!-- Setting 9: Color Picker -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting9" class="w-1/2">Choose Accent Color</label>
+                        <input type="color" id="setting9" class="form-color-picker" />
+                    </div>
+
+                    <!-- Setting 10: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting10" class="w-1/2">Auto-Save Settings</label>
+                        <input type="checkbox" id="setting10" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 11: Select Box -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting11" class="w-1/2">Theme</label>
+                        <select id="setting11" class="form-select">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    </div>
+
+                    <!-- Setting 12: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting12" class="w-1/2">Enable Sounds</label>
+                        <input type="checkbox" id="setting12" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 13: File Upload -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting13" class="w-1/2">Upload Profile Picture</label>
+                        <input type="file" id="setting13" class="form-input" />
+                    </div>
+
+                    <!-- Setting 14: Date Picker -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting14" class="w-1/2">Select Birthdate</label>
+                        <input type="date" id="setting14" class="form-input" />
+                    </div>
+
+                    <!-- Setting 15: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting15" class="w-1/2">Auto-Login</label>
+                        <input type="checkbox" id="setting15" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 16: Range Input -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting16" class="w-1/2">Adjust Volume</label>
+                        <input type="range" id="setting16" class="form-range" min="0" max="100" value="50" />
+                    </div>
+
+                    <!-- Setting 17: Text Input -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting17" class="w-1/2">Email Address</label>
+                        <input type="email" id="setting17" class="form-input" placeholder="example@domain.com" />
+                    </div>
+
+                    <!-- Setting 18: Select Box -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting18" class="w-1/2">Preferred Contact</label>
+                        <select id="setting18" class="form-select">
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                        </select>
+                    </div>
+
+                    <!-- Setting 19: Toggle Switch -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting19" class="w-1/2">Enable Beta Features</label>
+                        <input type="checkbox" id="setting19" class="toggle-checkbox" />
+                    </div>
+
+                    <!-- Setting 20: Text Input -->
+                    <div class="flex items-center space-x-2">
+                        <label for="setting20" class="w-1/2">Your Age</label>
+                        <input type="number" id="setting20" class="form-input" placeholder="18" />
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer Section -->
+            <footer class="mt-6">
+                <div class="flex items-center justify-center space-x-2">
+                    <h2>By students, for students</h2>
+                </div>
+            </footer>
+        </div>
+
+        <!-- JavaScript to Handle Settings -->
+        <script src="../js/settings.js"></script>
+    </body>
 </html>
