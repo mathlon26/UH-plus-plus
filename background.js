@@ -13,5 +13,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse("Saved studentData succesfully.");
         });
     }
+    else if (message.action == "getTopBarHTML") {
+        fetch(chrome.runtime.getURL("html/components/topBar.html"))
+            .then(response => response.text())
+            .then(html => sendResponse({ html: html }))
+            .catch(err => sendResponse({ error: err }));
+        return true;
+    }
     return false;
 });
