@@ -21,7 +21,7 @@
   "content_scripts": [
     {
       "js": ["scripts/content.js", "scripts/main-content.js"],
-      "css": ["css/styles.css", "css/main.css"],
+      "css": ["css/styles.css", "css/main.css", "css/compiled.css"],
       "matches": ["*://mijnstudentendossier.uhasselt.be/*"]
     },
     {
