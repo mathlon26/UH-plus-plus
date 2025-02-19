@@ -108,14 +108,6 @@ function english_linkButtons() {}
 
 (() => {
   function loadCustomPage(lang) {
-    if (DEBUG) {
-      document.getElementById("studentDataPre").textContent = JSON.stringify(
-        studentData,
-        null,
-        2
-      );
-    }
-
     function initNav() {
       let navWithLinks = document.getElementsByClassName("hasLinksNav");
       const navTab = document.getElementById("linksTab");
@@ -210,7 +202,9 @@ function english_linkButtons() {}
 
     const placeholder = document.getElementById("placeholder");
 
-    function loadHomeContent(tables) {
+    function loadHomeContent() {
+        const tables = document.getElementsByClassName("luc2");
+
         function capitalizeFirstLetter(str) {
             if (!str) return str; // Handle empty strings
             return str.charAt(0).toUpperCase() + str.slice(1);
@@ -459,6 +453,9 @@ function english_linkButtons() {}
       );
     }
 
+
+
+
     hideBody();
     loadStudentData();
     disableFunctions();
@@ -466,7 +463,12 @@ function english_linkButtons() {}
     loadRemixIcons();
     loadCustomBody();
   }
+
+    //  retrieve settings  and  do stuff based on them
+    //  make settings global
   // First: Remove the default styles and hide the websites content, replace it with the custom html
+
+  
   initDefaultWebFunctionality();
 })();
 
