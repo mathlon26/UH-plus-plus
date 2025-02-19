@@ -39,205 +39,196 @@
   </header>
   <div class="flex justify-center h-16 w-screen">
     <nav class="flex justify-center items-center mx-auto">
-      <a href="/"
-        class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 selectedNav">Home</a>
+      <a href="/" id="defaultLink"
+        class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900">Home</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabAdministratie">Administratie</a>
+        navlink="navTabAdministratie">Administratie</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabExamens">Examens</a>
+        navlink="navTabExamens">Examens & Planning</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabGegevens">Gegevens</a>
+        navlink="navTabGegevens">Gegevens</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabFinancieel">Financieel</a>
+        navlink="navTabFormulieren">Formulieren</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabFormulieren">Formulieren</a>
+        navlink="navTabStudie">Studie</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabStudie">Studie</a>
-      <a href
-        class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabTools">Tools</a>
+        navlink="navTabTools">Tools</a>
       <a href="/"
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        target="navTabWerk">Werk</a>
+        navlink="navTabWerk">Werk</a>
     </nav>
   </div>
-  <div id="linksTab" class="flex h-0 overflow-hidden w-screen bg-red-500 shadow-top transition-all duration-300">
+  <div id="linksTab"
+    class="flex h-0 overflow-hidden w-screen bg-red-500 shadow-top transition-all duration-300">
     <!-- Administratie Tab -->
-    <div id="navTabAdministratie" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabAdministratie"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
+        <div id="aanvraagstudietraject" navTab="navTabAdministratie" class="flex items-center space-x-2">
           <i class="ri-send-plane-line text-xl"></i>
           <span>Aanvraag studietraject</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="opleidingsonderdelen" navTab="navTabAdministratie" class="flex items-center space-x-2">
           <i class="ri-book-2-line text-xl"></i>
           <span>Opleidingsonderdelen</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="studiecontract" navTab="navTabAdministratie" class="flex items-center space-x-2">
           <i class="ri-edit-line text-xl"></i>
           <span>Studiecontract (controleren/wijzigen)</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="uitschrijvenopleiding" navTab="navTabAdministratie" class="flex items-center space-x-2">
           <i class="ri-close-circle-line text-xl"></i>
           <span>Uitschrijven opleiding</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="inschrijvingslimietopleidingsonderdelen" navTab="navTabAdministratie"
+          class="flex items-center space-x-2">
           <i class="ri-list-check-2-line text-xl"></i>
           <span>Inschrijvingslimiet opleidingsonderdelen</span>
         </div>
-        <div class="flex items-center space-x-2">
-          <i class="ri-road-map-line text-xl"></i>
-          <span>Mijn studietraject</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <i class="ri-bar-chart-line text-xl"></i>
-          <span>Mijn studievoortgang</span>
+        <div id="studiegeld" navTab="navTabAdministratie" class="flex items-center space-x-2">
+          <i class="ri-bank-line text-xl"></i>
+          <span>Mijn studiegeld</span>
         </div>
       </div>
     </div>
-  
+
     <!-- Examens Tab -->
-    <div id="navTabExamens" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabExamens"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+        <div id="examencijfers" navTab="navTabExamens" class="flex items-center space-x-2">
           <i class="ri-clipboard-line text-xl"></i>
           <span>Examencijfers</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="meldingafwezigheideninhaalexamen" navTab="navTabExamens"
+          class="flex items-center space-x-2">
           <i class="ri-alarm-line text-xl"></i>
           <span>Melding afwezigheid en aanvraag inhaalexamen</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="verklaringdigitaalexamen" navTab="navTabExamens" class="flex items-center space-x-2">
           <i class="ri-checkbox-circle-line text-xl"></i>
-          <span>Verklaring op eer mbt het afleggen van een digitaal examen</span>
+          <span>Verklaring op eer mbt het afleggen van een digitaal
+            examen</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="uurexamenroosters" navTab="navTabExamens" class="flex items-center space-x-2">
           <i class="ri-calendar-todo-line text-xl"></i>
           <span>Mijn uurroosters / examenroosters</span>
         </div>
       </div>
     </div>
-  
+
     <!-- Gegevens Tab -->
-    <div id="navTabGegevens" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabGegevens"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+        <div id="persoonlijkegegevens" navTab="navTabGegevens" class="flex items-center space-x-2">
           <i class="ri-user-line text-xl"></i>
           <span>Mijn persoonlijke gegevens</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="privacyvoorkeuren" navTab="navTabGegevens" class="flex items-center space-x-2">
           <i class="ri-shield-user-line text-xl"></i>
           <span>Mijn privacyvoorkeuren</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="studentenkaart" navTab="navTabGegevens" class="flex items-center space-x-2">
           <i class="ri-id-card-line text-xl"></i>
           <span>Mijn studentenkaart</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="eid" navTab="navTabGegevens" class="flex items-center space-x-2">
           <i class="ri-fingerprint-line text-xl"></i>
           <span>Mijn eID</span>
         </div>
       </div>
     </div>
-  
-    <!-- Financieel Tab -->
-    <div id="navTabFinancieel" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
-          <i class="ri-bank-line text-xl"></i>
-          <span>Mijn studiegeld</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <i class="ri-building-line text-xl"></i>
-          <span>Studentenvoorzieningen</span>
-        </div>
-      </div>
-    </div>
-  
+
     <!-- Formulieren Tab -->
-    <div id="navTabFormulieren" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabFormulieren"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+        <div id="formulierenattestenovereenkomsten" navTab="navTabFormulieren"
+          class="flex items-center space-x-2">
           <i class="ri-file-list-3-line text-xl"></i>
           <span>Formulieren/attesten/overeenkomsten</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="studentvoorzieningenformulieren" navTab="navTabFormulieren"
+          class="flex items-center space-x-2">
           <i class="ri-file-copy-line text-xl"></i>
           <span>Formulieren</span>
         </div>
       </div>
     </div>
-  
+
     <!-- Studie Tab -->
-    <div id="navTabStudie" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabStudie"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
+        <div id="loopbaan" navTab="navTabStudie" class="flex items-center space-x-2">
           <i class="ri-briefcase-line text-xl"></i>
           <span>Loopbaan</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="studentpoint" navTab="navTabStudie" class="flex items-center space-x-2">
           <i class="ri-user-star-line text-xl"></i>
           <span>Student Point</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="bijzondereomstandigheden" navTab="navTabStudie" class="flex items-center space-x-2">
           <i class="ri-error-warning-line text-xl"></i>
           <span>Bijzondere omstandigheden</span>
         </div>
-        <div class="flex items-center space-x-2">
-          <i class="ri-team-line text-xl"></i>
-          <span>Studentensecretariaat</span>
-        </div>
-        <div class="flex items-center space-x-2">
+        <div id="meldingendienstonderwijs" navTab="navTabStudie" class="flex items-center space-x-2">
           <i class="ri-notification-2-line text-xl"></i>
           <span>Mededelingen van dienst onderwijs</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="onderwijsevaluatie" navTab="navTabStudie" class="flex items-center space-x-2">
           <i class="ri-bar-chart-2-line text-xl"></i>
           <span>Onderwijsevaluatie</span>
         </div>
       </div>
     </div>
-  
+
     <!-- Tools Tab -->
-    <div id="navTabTools" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabTools"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
+        <div id="blackboard" navTab="navTabTools" class="flex items-center space-x-2">
           <i class="ri-computer-line text-xl"></i>
           <span>Blackboard</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="campussoftware" navTab="navTabTools" class="flex items-center space-x-2">
           <i class="ri-settings-4-line text-xl"></i>
           <span>Software (Campuslicenties)</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="laptop" navTab="navTabTools" class="flex items-center space-x-2">
           <i class="ri-laptop-line text-xl"></i>
-          <span>Laptop</span>
+          <span>Laptop Kopen</span>
         </div>
-        <div class="flex items-center space-x-2">
-          <i class="ri-search-line text-xl"></i>
-          <span>Zoek software in pc-lokalen</span>
-        </div>
-        <div class="flex items-center space-x-2">
+        <div id="initieelpaswoord" navTab="navTabTools" class="flex items-center space-x-2">
           <i class="ri-lock-line text-xl"></i>
           <span>Initieel paswoord</span>
         </div>
       </div>
     </div>
-  
+
     <!-- Werk Tab -->
-    <div id="navTabWerk" class="hidden p-4 justify-center items-center mx-auto text-white">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
-        <div class="flex items-center space-x-2">
+    <div id="navTabWerk"
+      class="hidden p-4 justify-center items-center mx-auto text-white">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+        <div id="jobstudentportaal" navTab="navTabWerk" class="flex items-center space-x-2">
           <i class="ri-briefcase-4-line text-xl"></i>
           <span>Jobstudent portaal</span>
         </div>
-        <div class="flex items-center space-x-2">
+        <div id="studentstartup" navTab="navTabWerk" class="flex items-center space-x-2">
           <i class="ri-rocket-line text-xl"></i>
           <span>StudentStartUP</span>
         </div>
@@ -245,7 +236,8 @@
     </div>
   </div>
   
-  <h1">Welkom <span id="welkomVolNaam"></span></h1>
+  <div id="placeholder" class="mx-auto flex items-center text-left justify-center bg-red-200">
 
+  </div>
   <pre id="studentDataPre"></pre>
 </div>
