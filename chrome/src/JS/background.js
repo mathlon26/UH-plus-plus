@@ -19,7 +19,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return true;
     }
 
-
     if (message.action == "GET::custom_html") {
         console.log("test");
         var url = message.lang == "04" ? "src/pages/custom_en.html" : "src/pages/custom_nl.html";
