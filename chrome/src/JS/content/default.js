@@ -218,8 +218,10 @@ function english_linkButtons() {}
                 placeholder.innerHTML = response.html;
               }
             }
-        );
 
+            // handle the editing of the response.html with content out of 'tables'
+            
+        );
     }
 
     function loadContent() {
