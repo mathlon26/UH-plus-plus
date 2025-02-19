@@ -10,10 +10,18 @@ const DEBUG = true;
                 window.open("../pages/settings.html");
             })
     }
+    function initBugreportButton()
+    {
+        // setup button callback
+        document.getElementById("bugreportButton").addEventListener("click", function (){
+            window.open("https://github.com/mathlon26/UH-plus-plus/issues");
+        })
+    }    
     function initPopup()
     {
         // run popup functions
         initSettingsButton();
+        initBugreportButton();
     }
 
     // Init the popup
