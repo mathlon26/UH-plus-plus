@@ -108,6 +108,14 @@ function english_linkButtons() {}
 
 (() => {
   function loadCustomPage(lang) {
+    if (DEBUG) {
+      document.getElementById("studentDataPre").textContent = JSON.stringify(
+        studentData,
+        null,
+        2
+      );
+    }
+
     function initNav() {
       let navWithLinks = document.getElementsByClassName("hasLinksNav");
       const navTab = document.getElementById("linksTab");
@@ -202,9 +210,7 @@ function english_linkButtons() {}
 
     const placeholder = document.getElementById("placeholder");
 
-    function loadHomeContent() {
-        const tables = document.getElementsByClassName("luc2");
-
+    function loadHomeContent(tables) {
         function capitalizeFirstLetter(str) {
             if (!str) return str; // Handle empty strings
             return str.charAt(0).toUpperCase() + str.slice(1);
