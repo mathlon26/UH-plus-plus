@@ -17,7 +17,49 @@ const DEBUG = true;
             document.getElementById("welkomVolNaam").innerText = volNaam;
         }
 
+        function initNav() {
+            let navWithLinks = document.getElementsByClassName("hasLinksNav");
+            const navTab = document.getElementById("linksTab");
+
+            let lastEl = null;
+            let view = null;
+        
+            Array.from(navWithLinks).forEach(element => {
+                element.addEventListener("mouseover", () => {
+                navTab.classList.remove("h-0");
+                navTab.classList.add("h-auto");
+                element.classList.add("border-b-3", "border-red-500");
+                view = document.getElementById(element.attributes.target.value);
+                view.classList.remove("hidden");
+                lastEl = element;
+                });
+        
+                element.addEventListener("mouseleave", () => {
+                    navTab.classList.remove("h-auto");
+                    navTab.classList.add("h-0");
+                    element.classList.remove("border-b-3", "border-red-500");
+                    view.classList.add("hidden");
+                    lastEl = element;
+                });
+            });
+
+            navTab.addEventListener("mouseover", () => {
+                navTab.classList.remove("h-0");
+                navTab.classList.add("h-auto");
+                view.classList.remove("hidden");
+                lastEl.classList.add("border-b-3", "border-red-500");
+            });
+        
+            navTab.addEventListener("mouseleave", () => {
+                navTab.classList.remove("h-auto");
+                navTab.classList.add("h-0");
+                view.classList.add("hidden");
+                lastEl.classList.remove("border-b-3", "border-red-500");
+            });
+        }
+        
         fillText();
+        initNav();
     }
 
     function loadCustomPageContent_DUTCH() {
