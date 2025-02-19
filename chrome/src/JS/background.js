@@ -9,12 +9,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     async function getContentPage(pageName) {
         console.log("GET content " + pageName);
         let url = `src/pages/content/${pageName}.html`;
-        await fetch(chrome.runtime.getURL(url))
-            .then(response => response.text())
-            .then(html => sendResponse({ html: html}))
-            .catch(err => sendResponse({ error: err }));
-
-        return false;
+        try {
+            const response = await fetch(chrome.runtime.getURL(url));
+            const html = await response.text();
+            sendResponse({ html: html });
+        } catch (err) {
+            sendResponse({ error: err });
+        }
+        return true;
     }
 
 
@@ -39,7 +41,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
     else if (message.action == "GET::contentPage") {
         getContentPage(message.page);
-        return false;
+        return true; 
     }
 
 
