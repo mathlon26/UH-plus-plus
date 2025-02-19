@@ -45,10 +45,9 @@ function loadHomeContent(tables) {
             if (response.html) {
             placeholder.innerHTML = response.html;
             }
-        }
 
-        // handle the editing of the response.html with content out of 'tables'
-        
+            // handle the editing of the response.html with content out of 'tables'
+        }
     );
 }
 
