@@ -211,16 +211,43 @@ function english_linkButtons() {}
     const placeholder = document.getElementById("placeholder");
 
     function loadHomeContent(tables) {
+        function capitalizeFirstLetter(str) {
+            if (!str) return str; // Handle empty strings
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    
         chrome.runtime.sendMessage(
-            { action: "GET::contentPage", page: "home"},
+            { action: "GET::contentPage", page: "home" },
             (response) => {
-              if (response.html) {
-                placeholder.innerHTML = response.html;
-              }
-            }
+                if (response.html) {
+                    placeholder.innerHTML = response.html;
+                }
 
-            // handle the editing of the response.html with content out of 'tables'
-            
+                const table = tables[0];
+                const listContent = table.querySelector("#Label3 ul");
+    
+                Array.from(listContent.children).forEach((child) => {
+                    child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
+                });
+    
+                document.getElementById("content-studentName").innerText = `${studentData.Voornaam} ${studentData.Naam}`;
+                document.getElementById("content-list").innerHTML = listContent.outerHTML; // Use outerHTML to properly insert content
+            }
+        );
+    }
+
+    function loadLogout(tables) {
+        const body = document.getElementsByTagName("body")[0];
+
+        console.log(body);
+
+        chrome.runtime.sendMessage(
+            { action: "GET::contentPage", page: "logout" },
+            (response) => {
+                if (response.html) {
+                    body.innerHTML = response.html;
+                }
+            }
         );
     }
 
@@ -298,6 +325,9 @@ function english_linkButtons() {}
         case "/sdsActiviteitenStudNieuw.aspx?activiteit=STARTUP":
           loadStartUpContent(tables);
           break;
+        case "/Shibboleth.sso/Logout":
+            loadLogout(tables);
+            break;
         default:
           loadHomeContent(tables);
           break;
@@ -429,10 +459,10 @@ function english_linkButtons() {}
       );
     }
 
+    hideBody();
     loadStudentData();
     disableFunctions();
     removeDefaultStyling();
-    hideBody();
     loadRemixIcons();
     loadCustomBody();
   }
