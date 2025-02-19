@@ -2,7 +2,7 @@
 UHasselt Plus Plus is a plugin that aims to update mijnstudentendosier.uhasselt.be to look more modern and have modern functionality.
 
 # Development guide
->**_NOTE_** It is currently not possibile for unpermitted users to contribute to this project
+>**_NOTE_** It is currently not possible for unpermitted users to contribute to this project
 
 ## setup the local repo
 To start contributing create a new branch from dev named: feature-"featurename"
