@@ -18,6 +18,7 @@ const DEBUG = true;
         window.open("https://github.com/mathlon26/UH-plus-plus/issues");
       });
   }
+
   function initDisableButton() {
 
     function setSettingEnabled(_value) {

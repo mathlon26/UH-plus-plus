@@ -42,6 +42,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         getContentPage(message.page);
         return true; 
     }
+    else if (message.action == "GET::settings") {
+        // lees settings
+        let settings = null;
+        sendResponse({settings: settings});
+    }
 
 
 
