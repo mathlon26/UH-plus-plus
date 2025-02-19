@@ -13,8 +13,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse("Saved studentData succesfully.");
         });
     }
-    else if (message.action == "getTopBarHTML") {
-        fetch(chrome.runtime.getURL("html/components/topBar.html"))
+    else if (message.action == "getCustomBodyHTML") {
+        fetch(chrome.runtime.getURL("html/components/custom.html"))
             .then(response => response.text())
             .then(html => sendResponse({ html: html }))
             .catch(err => sendResponse({ error: err }));

@@ -4,10 +4,8 @@
 javascript used specifically on mijnstudentendossier.uhasselt.be/*
 
 */
-const topBar = document.getElementById("Top1_lblTop");
 const topBarUrl = chrome.runtime.getURL("html/components/topBar.html");
 const cssUrl = chrome.runtime.getURL("css/styles.css");
-const bottomBar = document.getElementById("Bottom1_lblBottom");
 const scriptUrl = chrome.runtime.getURL("js/tailwind.min.js");
 
 (() => {
@@ -25,22 +23,31 @@ const scriptUrl = chrome.runtime.getURL("js/tailwind.min.js");
         });
     }
 
-    function removeTopBar() {
-        topBar.innerHTML = "";
+    function hideBody() {
+        const form = document.getElementById("form1");
+        if (form) {
+            form.classList.add('hidden');
+        }
     }
 
-    function removeBottomBar() {
-        bottomBar.innerHTML = "";
-    }
 
-    function loadCustomTopBar() {
-        chrome.runtime.sendMessage({ action: 'getTopBarHTML' }, (response) => {
+    function loadCustomBody() {
+        const customDiv = document.createElement('div');
+        customDiv.id = 'customBody';
+        document.body.appendChild(customDiv);
+
+        const body = document.getElementById("customBody");
+
+        chrome.runtime.sendMessage({ action: 'getCustomBodyHTML' }, (response) => {
             if (response.html) {
-                topBar.innerHTML = response.html;
+                body.innerHTML = response.html;
+                console.log(studentData);
+                document.getElementById("studentDataPre").textContent = JSON.stringify(studentData, null, 2);
             } else {
                 console.error("Error loading HTML:", response.error);
             }
         });
+
     }
 
     function injectCSS_JS() {
@@ -57,28 +64,33 @@ const scriptUrl = chrome.runtime.getURL("js/tailwind.min.js");
         document.head.appendChild(script);
     }
 
+    
+    function fetchStudentData() {
+        chrome.storage.local.get("studentData", (result) => {
+            if (result.studentData) {
+                studentData = result.studentData;
+                console.log("Data retrieved:", studentData);
+                
+            } else {
+                setTimeout(fetchStudentData, 1000); // Retry after 500ms
+            }
+        });
+    }
 
-    chrome.storage.local.get("studentData", (result) => {
-        if (result.studentData) {
-            document.getElementById("output").textContent = JSON.stringify(result.studentData, null, 2);
-        } else {
-            document.getElementById("output").textContent = "No data found.";
-        }
-
-
-        studentData = result.studentData;
-
-    });
-
-
+    fetchStudentData();
 
     injectCSS_JS();
 
     // TODO: execute following functions based on user's settings
 
+    hideBody();
+    loadCustomBody();
     removeDefaultStyle();
-    removeTopBar();
-    removeBottomBar();
-    loadCustomTopBar();
     
 })();
+
+
+/**
+ * 
+ * <td class="unselectedMenuItem" id="Menu1-menuItem051" onclick="javascript:skm_closeSubMenus(document.getElementById('Menu1'));location.href='javascript: taal(\'01\');';" onmouseover="javascript:skm_mousedOverMenu('Menu1',this, document.getElementById('Menu1'), true, '');this.className='selectedMenuItem';" onmouseout="javascript:skm_mousedOutMenu('Menu1', this, '');this.className='unselectedMenuItem';">Nederlands</td>
+ */
