@@ -8,7 +8,7 @@
         <link href="../CSS/compiled.css" rel="stylesheet">
     </head>
     <body>
-        <div class="flex flex-col bg-white min-w-80 p-4">
+        <div class="flex flex-col bg-white min-w-80 min-h-80 p-4">
             <div class="flex items-center justify-center space-x-2 mb-3">
                 <h1 class="text-2xl font-bold">UHasselt</h1>
                 <img
@@ -24,16 +24,15 @@
                     </div>
                 </div>
             </main>
-
-            <pre id="output"></pre>
-
-
-            <button class="bg-gray-900 text-white w-40 rounded-2xl p-2 hover:cursor-pointer" id="settingsButton">Edit Settings</button>
-
-
-            <footer>
+                <div class="flex justify-center space-x-4">
+                    <button class="bg-gray-900 text-white w-40 rounded-2xl p-2 hover:cursor-pointer" id="settingsButton">Edit Settings</button>
+                </div>
+            <footer class="mt-auto">
                 <div class="flex items-center justify-center space-x-2">
                     <h2>By students, for students</h2>
+                </div>
+                <div class="flex items-center justify-center space-x-2">
+                    <a id="bugreportButton" class="text-gray-500 hover:underline">Found a bug? Report it here.</a>
                 </div>
             </footer>
             
@@ -41,5 +40,6 @@
         <!-- Since popup.html is in the html folder and popup.js is in the js folder,
          we use "../js/popup.js" as the relative path -->
         <script src="../JS/pages/popup.js"></script>
+
     </body>
 </html>
