@@ -26,5 +26,6 @@
       "service_worker": "src/JS/background.js",
       "type": "module"
     }
+
   }
   
