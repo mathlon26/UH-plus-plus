@@ -236,6 +236,34 @@ function english_linkButtons() {}
         );
     }
 
+    function loadMeldingenContent() {
+      function capitalizeFirstLetter(str) {
+          if (!str) return str; // Handle empty strings
+          return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      const tables = document.getElementsByClassName("luc");
+
+      chrome.runtime.sendMessage(
+          { action: "GET::contentPage", page: "mededelingen" },
+          (response) => {
+              if (response.html) {
+                  placeholder.innerHTML = response.html;
+              }
+
+              const table = tables[0];
+              const listContent = table.querySelector("#TMededeling");
+  
+              Array.from(listContent.children).forEach((child) => {
+                  child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
+              });
+  
+              document.getElementById("content-studentName").innerText = `${studentData.Voornaam} ${studentData.Naam}`;
+              document.getElementById("content-list").innerHTML = listContent.outerHTML; // Use outerHTML to properly insert content
+          }
+      );
+  }
+
     function loadLogout(tables) {
         const body = document.getElementsByTagName("body")[0];
 
@@ -314,7 +342,7 @@ function english_linkButtons() {}
           loadBijzondereOmstandighedenContent(tables);
           break;
         case "/sdsMededelingen.aspx":
-          loadMeldingenContent(tables);
+          loadMeldingenContent();
           break;
         case "/sdsLicentie.aspx":
           loadSoftwareContent(tables);
