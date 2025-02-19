@@ -2205,6 +2205,12 @@
     }
   }
 }
+.shadow-top {
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+.selectedNav {
+  border-bottom: 3px solid red;
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);
