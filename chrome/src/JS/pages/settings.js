@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textColorInput = document.getElementById('textColor');
 
     // Load saved settings
-    chrome.storage.sync .get(['theme', 'bgColor', 'textColor'], (data) => {
+    chrome.storage.sync.get(['theme', 'bgColor', 'textColor'], (data) => {
         if (data.theme) {
             themeSelect.value = data.theme;
         }
