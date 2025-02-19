@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 .shadow-top {
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .selectedNav {
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid oklch(0.505 0.213 27.518);
 }
