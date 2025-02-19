@@ -210,7 +210,9 @@ function english_linkButtons() {}
 
     const placeholder = document.getElementById("placeholder");
 
-    function loadHomeContent(tables) {
+    function loadHomeContent() {
+        const tables = document.getElementsByClassName("luc2");
+
         function capitalizeFirstLetter(str) {
             if (!str) return str; // Handle empty strings
             return str.charAt(0).toUpperCase() + str.slice(1);
