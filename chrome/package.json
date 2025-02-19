@@ -1,0 +1,16 @@
+{
+  "name": "uhasselt-plus-plus",
+  "version": "2.0.0",
+  "description": "UHasselt++ is a chrome and firefox extension which gives a new look to the student files and allows a user to personalize the website's theme.",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./src/CSS/styles.css -o ./src/CSS/compiled.css --watch"
+  },
+  "keywords": [],
+  "author": "Mathijs Follon, Joost Lehaen",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^4.0.7"
+  }
+}

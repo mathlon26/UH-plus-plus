@@ -1,0 +1,30 @@
+{
+    "version": "2.0",
+    "name": "UHasselt++",
+    "description": "UHasselt++ is a chrome extension which gives a new look to the student files and allows a user to personalize the website's theme.",
+    "manifest_version": 3,
+    "permissions": ["activeTab", "cookies", "scripting", "storage"],
+    "icons": {
+      "16": "src/resources/images/icon-16.png",
+      "32": "src/resources/images/icon-32.png",
+      "48": "src/resources/images/icon-48.png",
+      "128": "src/resources/images/icon-128.png"
+    },
+    "content_scripts": [
+      {
+        "js": ["src/JS/content/default.js"],
+        "css": ["src/CSS/compiled.css"],
+        "matches": ["*://mijnstudentendossier.uhasselt.be/*"]
+      }
+    ],
+    "options_page": "src/pages/settings.html",
+    "action": {
+      "default_popup": "src/pages/popup.html",
+      "default_icon": "src/resources/images/icon-128.png"
+    },
+    "background": {
+      "service_worker": "src/JS/background.js",
+      "type": "module"
+    }
+  }
+  
