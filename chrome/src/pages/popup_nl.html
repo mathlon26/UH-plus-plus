@@ -1,0 +1,39 @@
+<div class="flex flex-col bg-white min-w-80 min-h-80 p-4">
+    <div class="flex items-center justify-center space-x-2 mb-3">
+        <h1 class="text-2xl font-bold">UHasselt</h1>
+        <img
+            class="h-8 w-8"
+            src="../resources/images/icon-128.png"
+            alt="logo" />
+    </div>
+    
+    <main>
+        <div class="flex flex-col welcome">
+            <div class="flex items-center justify-center space-x-2 text-2xl">
+                <h2>Welkom <span id="usernameDisplay"></span></h2>
+            </div>
+        </div>
+    </main>
+    <div class="flex justify-center space-x-4">
+        <button
+            class="bg-gray-900 text-white w-40 rounded-2xl p-2 hover:cursor-pointer"
+            id="settingsButton">Instellingen</button>
+    </div>
+    <footer class="mt-auto">
+        <div class=" flex mx-auto justify-center items-center">
+            <label class="relative flex justify-between items-center p-2 text-xl">
+                <input id="onOffSwitch-input" type="checkbox"
+                    class="absolute left-1/2 -translate-x-1/2 w-full h-full rounded-md" />
+            </label>
+            <p class="px-6 text-gray-800 font-bold text-md">Moderne Layout</p>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+            <h2>By students, for students</h2>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+            <a id="bugreportButton"
+                class="text-gray-500 hover:underline hover:cursor-pointer">Bug
+                gevonden? Meld het hier!</a>
+        </div>
+    </footer>
+</div>

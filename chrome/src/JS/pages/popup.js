@@ -1,6 +1,14 @@
 const DEBUG = true;
+let settings_global = {};
 
 (() => {
+  function updateSettings(callback) {
+    chrome.runtime.sendMessage({ action: "GET::settings" }, (response) => {
+      settings_global = response.settings;
+      callback();
+    });
+  }
+
   function initSettingsButton() {
     // setup button callback
     document
@@ -20,44 +28,43 @@ const DEBUG = true;
   }
 
   function initDisableButton() {
+    const toggle = document.getElementById("onOffSwitch-input");
+
+    toggle.checked = settings_global.enabled == "true";
 
     function setSettingEnabled(_value) {
-        chrome.runtime.sendMessage({ action: "POST::settings", key:"enabled", value: _value });
+      chrome.runtime.sendMessage(
+        { action: "POST::settings", key: "enabled", value: _value },
+        (response) => {
+          chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            if (tabs.length > 0) {
+              chrome.tabs.reload(tabs[0].id);
+            }
+          });
+        }
+      );
     }
 
-    const btn = document.getElementById("onOffSwitch");
-    const input = document.getElementById("onOffSwitch-input");
-
-    chrome.runtime.sendMessage(
-        { action: "GET::settings" },
-        (response) => {
-            if (response.settings) {
-                if (!response.settings.enabled){
-                    btn.click();
-                }
-            }
-        }
-    );
-
-    btn.addEventListener("click", (event) => {
-        console.log(input.getAttribute("checked"));
-        if (input.getAttribute("checked")  === "true" )  {
-            input.setAttribute("checked", "false");
-            setSettingEnabled("false");
-        } else {
-            input.setAttribute("checked", "true");
-            setSettingEnabled("true");
-        }
+    toggle.addEventListener("click", () => {
+      setSettingEnabled(toggle.checked.toString());
     });
-  }
-  
-  function initPopup() {
-    // run popup functions
-    initDisableButton();
-    initSettingsButton();
-    initBugreportButton();
+
+    // todo
   }
 
+  function initPopup() {
+    const url = chrome.runtime.getURL(`src/pages/popup_${settings_global.lang}.html`);
+    console.log(url);
+    fetch(url)
+      .then((response) => response.text())
+      .then((html) => {
+        document.body.innerHTML = html;
+        initDisableButton();
+        initSettingsButton();
+        initBugreportButton();
+      })
+      .catch((error) => console.error("Error loading HTML:", error));
+  }
   // Init the popup
-  initPopup();
+  updateSettings(initPopup);
 })();
