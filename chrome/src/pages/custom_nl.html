@@ -20,10 +20,15 @@
             class="px-3 py-2 text-gray-700 hover:text-gray-900">Profiel</a>
           <a href="/"
             class="px-3 py-2 text-gray-700 hover:text-gray-900">Registreren
-            voor</a>
+          </a>
 
+
+          <a href id="uurRooster"
+            class="px-3 py-2 text-red-700 hover:text-red-900">
+            <i class="ri-calendar-2-line"></i>
+          </a>
           <a href id="langSwitch"
-            class="px-3 ml-4 py-2 text-gray-700 hover:text-gray-900">
+            class="px-3 py-2 text-gray-700 hover:text-gray-900">
             <i class="ri-earth-fill"></i>
             English
           </a>
@@ -46,7 +51,7 @@
         navlink="navTabAdministratie">Administratie</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
-        navlink="navTabExamens">Examens & Planning</a>
+        navlink="navTabExamens">Examens</a>
       <a href
         class="h-16 flex items-center justify-center text-center px-3 py-2 w-32 text-gray-700 hover:text-gray-900 hasLinksNav"
         navlink="navTabGegevens">Gegevens</a>
@@ -73,33 +78,33 @@
         <div
           class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
           <div id="aanvraagstudietraject" navTab="navTabAdministratie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-send-plane-line text-xl"></i>
             <span>Aanvraag studietraject</span>
           </div>
           <div id="opleidingsonderdelen" navTab="navTabAdministratie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-book-2-line text-xl"></i>
             <span>Opleidingsonderdelen</span>
           </div>
           <div id="studiecontract" navTab="navTabAdministratie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-edit-line text-xl"></i>
             <span>Studiecontract (controleren/wijzigen)</span>
           </div>
           <div id="uitschrijvenopleiding" navTab="navTabAdministratie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-close-circle-line text-xl"></i>
             <span>Uitschrijven opleiding</span>
           </div>
           <div id="inschrijvingslimietopleidingsonderdelen"
             navTab="navTabAdministratie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-list-check-2-line text-xl"></i>
             <span>Inschrijvingslimiet opleidingsonderdelen</span>
           </div>
           <div id="studiegeld" navTab="navTabAdministratie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-bank-line text-xl"></i>
             <span>Mijn studiegeld</span>
           </div>
@@ -112,23 +117,23 @@
         <div
           class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
           <div id="examencijfers" navTab="navTabExamens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-clipboard-line text-xl"></i>
             <span>Examencijfers</span>
           </div>
           <div id="meldingafwezigheideninhaalexamen" navTab="navTabExamens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-alarm-line text-xl"></i>
             <span>Melding afwezigheid en aanvraag inhaalexamen</span>
           </div>
           <div id="verklaringdigitaalexamen" navTab="navTabExamens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-checkbox-circle-line text-xl"></i>
-            <span>Verklaring op eer mbt het afleggen van een digitaal
+            <span>Verklaring op eer voor een digitaal
               examen</span>
           </div>
           <div id="uurexamenroosters" navTab="navTabExamens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-calendar-todo-line text-xl"></i>
             <span>Mijn uurroosters / examenroosters</span>
           </div>
@@ -141,22 +146,22 @@
         <div
           class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
           <div id="persoonlijkegegevens" navTab="navTabGegevens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-user-line text-xl"></i>
             <span>Mijn persoonlijke gegevens</span>
           </div>
           <div id="privacyvoorkeuren" navTab="navTabGegevens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-shield-user-line text-xl"></i>
             <span>Mijn privacyvoorkeuren</span>
           </div>
           <div id="studentenkaart" navTab="navTabGegevens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-id-card-line text-xl"></i>
             <span>Mijn studentenkaart</span>
           </div>
           <div id="eid" navTab="navTabGegevens"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-fingerprint-line text-xl"></i>
             <span>Mijn eID</span>
           </div>
@@ -167,14 +172,14 @@
       <div id="navTabFormulieren"
         class="hidden p-4 justify-center items-center mx-auto text-white">
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+          class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-center items-center mx-auto">
           <div id="formulierenattestenovereenkomsten" navTab="navTabFormulieren"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-file-list-3-line text-xl"></i>
-            <span>Formulieren/attesten/overeenkomsten</span>
+            <span>Attesten/overeenkomsten</span>
           </div>
           <div id="studentvoorzieningenformulieren" navTab="navTabFormulieren"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-file-copy-line text-xl"></i>
             <span>Formulieren</span>
           </div>
@@ -187,27 +192,27 @@
         <div
           class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
           <div id="loopbaan" navTab="navTabStudie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-briefcase-line text-xl"></i>
-            <span>Loopbaan</span>
+            <span class="hover:cursor-pointer ">Loopbaan</span>
           </div>
           <div id="studentpoint" navTab="navTabStudie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-user-star-line text-xl"></i>
             <span>Student Point</span>
           </div>
           <div id="bijzondereomstandigheden" navTab="navTabStudie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-error-warning-line text-xl"></i>
             <span>Bijzondere omstandigheden</span>
           </div>
           <div id="meldingendienstonderwijs" navTab="navTabStudie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-notification-2-line text-xl"></i>
-            <span>Mededelingen van dienst onderwijs</span>
+            <span>Mededelingen onderwijs</span>
           </div>
           <div id="onderwijsevaluatie" navTab="navTabStudie"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-bar-chart-2-line text-xl"></i>
             <span>Onderwijsevaluatie</span>
           </div>
@@ -218,26 +223,26 @@
       <div id="navTabTools"
         class="hidden p-4 justify-center items-center mx-auto text-white">
         <div
-          class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
+          class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
           <div id="blackboard" navTab="navTabTools"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-computer-line text-xl"></i>
             <span>Blackboard</span>
           </div>
           <div id="campussoftware" navTab="navTabTools"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-settings-4-line text-xl"></i>
-            <span>Software (Campuslicenties)</span>
+            <span>Software</span>
           </div>
           <div id="laptop" navTab="navTabTools"
-            class="flex items-center space-x-2">
-            <i class="ri-laptop-line text-xl"></i>
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-macbook-line"></i>
             <span>Laptop Kopen</span>
           </div>
           <div id="initieelpaswoord" navTab="navTabTools"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-lock-line text-xl"></i>
-            <span>Initieel paswoord</span>
+            <span>Wachtwoord</span>
           </div>
         </div>
       </div>
@@ -246,14 +251,14 @@
       <div id="navTabWerk"
         class="hidden p-4 justify-center items-center mx-auto text-white">
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+          class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-center items-center mx-auto">
           <div id="jobstudentportaal" navTab="navTabWerk"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-briefcase-4-line text-xl"></i>
             <span>Jobstudent portaal</span>
           </div>
           <div id="studentstartup" navTab="navTabWerk"
-            class="flex items-center space-x-2">
+            class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-rocket-line text-xl"></i>
             <span>StudentStartUP</span>
           </div>
@@ -266,4 +271,8 @@
     class="mx-auto shadow-top flex items-center text-left justify-center bg-white">
 
   </div>
+  <footer class="flex-col justify-center items-center mx-auto p-4 bg-red-500">
+    <div class="flex justify-center items-center mx-auto text-white">By students, for students</div>
+    <div class="flex justify-center items-center mx-auto text-white">Made possible by students of computer science @UHasselt</div>
+  </footer>
 </div>

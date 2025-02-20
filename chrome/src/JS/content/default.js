@@ -153,7 +153,7 @@ function english_linkButtons() {}
 
         element.addEventListener("mouseover", () => {
           navTab.classList.remove("h-0");
-          navTab.classList.add("h-auto");
+          navTab.classList.add("h-[104px]");
           element.classList.add("border-b-3", "border-red-500");
           view = document.getElementById(element.attributes.navlink.value);
           view.classList.remove("hidden");
@@ -161,7 +161,7 @@ function english_linkButtons() {}
         });
 
         element.addEventListener("mouseleave", () => {
-          navTab.classList.remove("h-auto");
+          navTab.classList.remove("h-[104px]");
           navTab.classList.add("h-0");
           element.classList.remove("border-b-3", "border-red-500");
           view.classList.add("hidden");
@@ -171,13 +171,13 @@ function english_linkButtons() {}
 
       navTab.addEventListener("mouseover", () => {
         navTab.classList.remove("h-0");
-        navTab.classList.add("h-auto");
+        navTab.classList.add("h-[104px]");
         view.classList.remove("hidden");
         lastEl.classList.add("border-b-3", "border-red-500");
       });
 
       navTab.addEventListener("mouseleave", () => {
-        navTab.classList.remove("h-auto");
+        navTab.classList.remove("h-[104px]");
         navTab.classList.add("h-0");
         view.classList.add("hidden");
         lastEl.classList.remove("border-b-3", "border-red-500");
