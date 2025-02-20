@@ -53,10 +53,9 @@ chrome.runtime.sendMessage({ action: "GET::settings" }, (response)=>{
 function saveSettings()
 {
       chrome.runtime.sendMessage({
-          action: "POST::settingsFull",
-          data: {
-              theme: themeSelect.value
-          }
+          action: "POST::settings",
+          key: "theme",
+          value: themeSelect.value
       })   
 }
 

@@ -61,11 +61,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             })
         }
         return true;
-    }else if(message.action == "POST::settingsFull") // post a full json instead of just a single setting
+    }else if(message.action == "POST::settingsFull") //WARNING OVERWRITES ALL SETTINGS post a full json instead of just a single setting 
     {
         const settings = message.data
         if(settings)
-        {
+        
             chrome.storage.local.set({settings: settings});
         }
     }
