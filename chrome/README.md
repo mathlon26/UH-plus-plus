@@ -52,6 +52,29 @@ function loadHomeContent(tables) {
 }
 
 ```
+## Managing settings
+This extension uses a background process to manage saving to the settings.
+To save settings you have to send a message with the action "POST:settings"
+The message wil change a single setting.
+
+example: (change "key" and "value" to the appropriate setting and value)
+```javascript
+chrome.runtime.sendMessage({
+        action: "POST::settings",
+        key: "key",
+        value: "value"
+})
+```
+> **_NOTE_** There is also an action "POST::settingsFull" but it overwrites ALL settings so try to not use it. (this takes in the settings json in the data field instead of key and value)
+
+to get the settings you need to send a message with the action "GET::settings".
+The response will be the entire settings json.
+```javascript
+chrome.runtime.sendMessage({ action: "GET::settings" }, (response)=>{
+        const settings = respons.settings
+        // use the settings json
+})
+```
 
 ## Running the plugin for testing
 Go to [Chrome extensions](chrome://extensions/)
