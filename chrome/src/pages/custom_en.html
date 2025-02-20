@@ -1,39 +1,278 @@
 
-<div>
-    <header class="bg-white shadow">
-      <div class="mx-auto">
-        <div class="flex justify-evenly h-16">
-          <!-- Left side: Logo and Title -->
-          <div class="flex">
-            <div class="flex items-center ml-4">
-              <h1 class="text-xl font-bold text-gray-900">UHasselt
-                Student File</h1>
-            </div>
+<div id="all" class="min-h-screen overflow-x-hidden">
+  <header class="bg-white shadow">
+    <div class="mx-auto">
+      <div class="flex justify-evenly h-16">
+        <!-- Left side: Logo and Title -->
+        <div class="flex">
+          <div class="flex items-center ml-4">
+            <h1 class="text-xl font-bold text-gray-900">UHasselt
+              Student File</h1>
           </div>
-  
-          <!-- Right side: Navigation (Desktop) -->
-          <nav class="flex items-center">
-            <!-- Add your navigation links here -->
-            <a href="/"
-              class="px-3 py-2 text-gray-700 hover:text-gray-900">Home</a>
-            <a href="/"
-              class="px-3 py-2 text-gray-700 hover:text-gray-900">Profile</a>
-            <a href="/"
-              class="px-3 py-2 text-gray-700 hover:text-gray-900">Study</a>
-            <a href="/"
-              class="px-3 py-2 text-gray-700 hover:text-gray-900">Facilities</a>
+        </div>
 
-            <a href="" id="langSwitch"
-              class="px-3 py-2 text-gray-700 hover:text-gray-900">Nederlands</a>
-          </nav>
+        <!-- Right side: Navigation (Desktop) -->
+        <nav class="flex items-center">
+          <!-- Add your navigation links here -->
+          <a href="/"
+            class="px-3 py-2 text-gray-700 hover:text-gray-900">Home</a>
+          <a href="/"
+            class="px-3 py-2 text-gray-700 hover:text-gray-900">Profile</a>
+          <a href="/"
+            class="px-3 py-2 text-gray-700 hover:text-gray-900">Register
+          </a>
+
+
+          <a href id="uurRooster"
+            class="px-3 py-2 text-red-700 hover:text-red-900">
+            Timetable
+            <i class="ri-calendar-2-line"></i>
+          </a>
+          <a href id="langSwitch"
+            class="px-3 py-2 text-gray-700 hover:text-gray-900">
+            NL
+            <i class="ri-earth-fill"></i>
+          </a>
+
+          <a href id="logOut"
+            class="px-3 ml-4 py-2 text-gray-700 hover:text-gray-900">
+            Logout
+            <i class="ri-logout-box-r-line"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="flex justify-center h-16 w-screen">
+    <nav class="flex justify-center items-center mx-auto">
+      <a href="/" id="defaultLink"
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900">Home</a>
+      <a href
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabAdministratie">Administration</a>
+      <a href
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabExamens">Exams</a>
+      <a href
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabGegevens">Data</a>
+      <a href
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabFormulieren">Forms</a>
+      <a href
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabStudie">Study</a>
+      <a href
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabTools">Tools</a>
+      <a href="/"
+        class="h-16 flex items-center justify-center text-center px-3 py-2 lg:w-32 md:w-28 sm:w-22 text-gray-700 hover:text-gray-900 hasLinksNav"
+        navlink="navTabWerk">Jobs</a>
+    </nav>
+  </div>
+  <div class="relative">
+    <div id="linksTab"
+      class="flex h-0 absolute overflow-hidden w-screen bg-red-500 shadow-top transition-all duration-300">
+      <!-- Administratie Tab -->
+      <div id="navTabAdministratie"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
+          <div id="aanvraagstudietraject" navTab="navTabAdministratie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-send-plane-line text-xl"></i>
+            <span>Compose academic program</span>
+          </div>
+          <div id="opleidingsonderdelen" navTab="navTabAdministratie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-book-2-line text-xl"></i>
+            <span>Course units</span>
+          </div>
+          <div id="studiecontract" navTab="navTabAdministratie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-edit-line text-xl"></i>
+            <span>Study contract (check/wijalterzigen)</span>
+          </div>
+          <div id="uitschrijvenopleiding" navTab="navTabAdministratie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-close-circle-line text-xl"></i>
+            <span>Deregistration study program</span>
+          </div>
+          <div id="inschrijvingslimietopleidingsonderdelen"
+            navTab="navTabAdministratie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-list-check-2-line text-xl"></i>
+            <span>Enrolment limit courses</span>
+          </div>
+          <div id="studiegeld" navTab="navTabAdministratie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-bank-line text-xl"></i>
+            <span>My tuition fee</span>
+          </div>
         </div>
       </div>
-    </header>
-    <main>
-      <h1">Welkom <span id="welkomVolNaam"></span></h1>
-      
-      
+
+      <!-- Examens Tab -->
+      <div id="navTabExamens"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+          <div id="examencijfers" navTab="navTabExamens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-clipboard-line text-xl"></i>
+            <span>Exam results</span>
+          </div>
+          <div id="meldingafwezigheideninhaalexamen" navTab="navTabExamens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-alarm-line text-xl"></i>
+            <span>Reporting absence and request catch-up exam</span>
+          </div>
+          <div id="verklaringdigitaalexamen" navTab="navTabExamens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-checkbox-circle-line text-xl"></i>
+            <span>Declaration of honour for digital exams</span>
+          </div>
+          <div id="uurexamenroosters" navTab="navTabExamens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-calendar-todo-line text-xl"></i>
+            <span>My timetable / exam schedule </span>
+          </div>
+        </div>
       </div>
-    </main>
-    <pre id="studentDataPre"></pre>
+
+      <!-- Gegevens Tab -->
+      <div id="navTabGegevens"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+          <div id="persoonlijkegegevens" navTab="navTabGegevens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-user-line text-xl"></i>
+            <span>My personal data</span>
+          </div>
+          <div id="privacyvoorkeuren" navTab="navTabGegevens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-shield-user-line text-xl"></i>
+            <span>My privacy preferences</span>
+          </div>
+          <div id="studentenkaart" navTab="navTabGegevens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-id-card-line text-xl"></i>
+            <span>My student card</span>
+          </div>
+          <div id="eid" navTab="navTabGegevens"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-fingerprint-line text-xl"></i>
+            <span>My eID</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulieren Tab -->
+      <div id="navTabFormulieren"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-center items-center mx-auto">
+          <div id="formulierenattestenovereenkomsten" navTab="navTabFormulieren"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-file-list-3-line text-xl"></i>
+            <span>Certificates/agreements</span>
+          </div>
+          <div id="studentvoorzieningenformulieren" navTab="navTabFormulieren"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-file-copy-line text-xl"></i>
+            <span>Forms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Studie Tab -->
+      <div id="navTabStudie"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center mx-auto">
+          <div id="loopbaan" navTab="navTabStudie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-briefcase-line text-xl"></i>
+            <span class="hover:cursor-pointer ">Career</span>
+          </div>
+          <div id="studentpoint" navTab="navTabStudie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-user-star-line text-xl"></i>
+            <span>Student Point</span>
+          </div>
+          <div id="bijzondereomstandigheden" navTab="navTabStudie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-error-warning-line text-xl"></i>
+            <span>Special circumstances</span>
+          </div>
+          <div id="meldingendienstonderwijs" navTab="navTabStudie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-notification-2-line text-xl"></i>
+            <span>Notice Education Service</span>
+          </div>
+          <div id="onderwijsevaluatie" navTab="navTabStudie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-bar-chart-2-line text-xl"></i>
+            <span>Course evaluation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools Tab -->
+      <div id="navTabTools"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
+          <div id="blackboard" navTab="navTabTools"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-computer-line text-xl"></i>
+            <span>Blackboard</span>
+          </div>
+          <div id="campussoftware" navTab="navTabTools"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-settings-4-line text-xl"></i>
+            <span>Software</span>
+          </div>
+          <div id="laptop" navTab="navTabTools"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-macbook-line"></i>
+            <span>Buy a laptop</span>
+          </div>
+          <div id="initieelpaswoord" navTab="navTabTools"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-lock-line text-xl"></i>
+            <span>Password</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Werk Tab -->
+      <div id="navTabWerk"
+        class="hidden p-4 justify-center items-center mx-auto text-white">
+        <div
+          class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-center items-center mx-auto">
+          <div id="jobstudentportaal" navTab="navTabWerk"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-briefcase-4-line text-xl"></i>
+            <span>Jobstudent portal</span>
+          </div>
+          <div id="studentstartup" navTab="navTabWerk"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-rocket-line text-xl"></i>
+            <span>StudentStartUP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+  <div id="placeholder"
+    class="mx-auto shadow-top flex items-center text-left justify-center bg-white">
+
+  </div>
+  <footer class="flex-col justify-center items-center mx-auto p-4 bg-red-500">
+    <div class="flex justify-center items-center mx-auto text-white">By students, for students</div>
+    <div class="flex justify-center items-center mx-auto text-white">Made possible by students of computer science @UHasselt</div>
+  </footer>
 </div>

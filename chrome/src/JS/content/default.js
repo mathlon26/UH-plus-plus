@@ -1,9 +1,31 @@
 var studentData = {};
 const DEBUG = true;
+let settings_global = {};
+
+function loadStudentData() {
+  document.querySelectorAll('input[type="hidden"]').forEach((input) => {
+    if (input.name.startsWith("Top1$ih")) {
+      var key = input.name.replace("Top1$ih", "");
+      var key = key.replace("Top", "");
+      studentData[key] = input.value || null;
+    }
+  });
+}
+
+function updateSettings(callback) {
+  let lang = studentData.Taal === "01" ? "nl" : "en";
+  chrome.runtime.sendMessage({action: "POST::settings", key: "lang", value: lang}, (response) =>  {
+    chrome.runtime.sendMessage({action: "GET::settings"}, (response) => {
+      settings_global = response.settings;
+      callback();
+    });
+  });
+}
+
+
 
 function dutch_linkButtons() {
   const roosterbtn = document.getElementById("uurRooster");
-
   const mijnburgerprofiel = document.getElementById("Menu1-menuItem002");
   const persoonlijkegegevens = document.getElementById("Menu1-menuItem005");
   const privacyvoorkeuren = document.getElementById("Menu1-menuItem006");
@@ -268,8 +290,6 @@ function english_linkButtons() {}
     function loadLogout(tables) {
         const body = document.getElementsByTagName("body")[0];
 
-        console.log(body);
-
         chrome.runtime.sendMessage(
             { action: "GET::contentPage", page: "logout" },
             (response) => {
@@ -402,16 +422,6 @@ function english_linkButtons() {}
     const nullFunction = () => {};
     const emptyObject = {};
 
-    function loadStudentData() {
-      document.querySelectorAll('input[type="hidden"]').forEach((input) => {
-        if (input.name.startsWith("Top1$ih")) {
-          var key = input.name.replace("Top1$ih", "");
-          var key = key.replace("Top", "");
-          studentData[key] = input.value || null;
-        }
-      });
-    }
-
     function disableFunctions() {
       window.skm_applyStyleInfoToElement = nullFunction;
       window.skm_styleInfo = function () {
@@ -488,23 +498,21 @@ function english_linkButtons() {}
       );
     }
 
-
-
-
-    hideBody();
-    loadStudentData();
-    disableFunctions();
-    removeDefaultStyling();
-    loadRemixIcons();
-    loadCustomBody();
+    let settings = settings_global;
+    if (settings.enabled == "true") {
+      hideBody();
+      disableFunctions();
+      removeDefaultStyling();
+      loadRemixIcons();
+      loadCustomBody();
+    }
   }
 
     //  retrieve settings  and  do stuff based on them
     //  make settings global
   // First: Remove the default styles and hide the websites content, replace it with the custom html
-
-  
-  initDefaultWebFunctionality();
+  loadStudentData();
+  updateSettings(initDefaultWebFunctionality);
 })();
 
 (() => {
