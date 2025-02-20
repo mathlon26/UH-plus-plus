@@ -328,34 +328,43 @@ function english_linkButtons() {}
 
             // populate unchangable fields
             // studentid
-            document.getElementById("Studentid").innerText =
+            document.getElementById("StudentID").value =
               form.querySelector("#lblStamnummer").innerText;
             // things todo with main
-            document.getElementById("FamilyName").innerText =
+            document.getElementById("FamName").value =
               form.querySelector("#lblNaam").innerText;
-            document.getElementById("Name").innerText =
+            document.getElementById("Name").value =
               form.querySelector("#lblVoornamen").innerText;
             // grayout roepnaam if it does not exist
             const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
 
             if (roepnaamText) {
-              document.getElementById("Callname").innerText = roepnaamText;
+              document.getElementById("CallName").value = roepnaamText;
             } else {
-              document.getElementById("Callname").innerText = "...";
+              document.getElementById("CallName").value = "None";
               document
-                .getElementById("callname-display")
-                .classList.add("text-gray-500");
+                .getElementById("CallName")
+                .classList.add("italic");
             }
 
-            document.getElementById("Nationality").innerText =
+            document.getElementById("Nationality").value =
               form.querySelector("#lblNation").innerText;
-            document.getElementById("SocSecNumber").innerText =
+            document.getElementById("SocSec").value =
               form.querySelector("#lblRijksReg").innerText;
 
-            document.getElementById("Birthdate").innerText =
+            document.getElementById("BirthPlace").value =
               form.querySelector("#lblGebDatPl").innerText;
-            document.getElementById("Married").innerText =
+            const marriedText = form.querySelector("#lblBurnaam").innerText;
+            if (marriedText) {
+              document.getElementById("Married").value =
               form.querySelector("#lblBurnaam").innerText;
+            } else {
+              document.getElementById("Married").value = "None";
+              document
+                .getElementById("Married")
+                .classList.add("italic");
+            }
+              
           }
         }
       );
