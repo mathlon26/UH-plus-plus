@@ -295,7 +295,56 @@ function english_linkButtons() {
               document.getElementById("content-list").innerHTML = listContent.outerHTML; // Use outerHTML to properly insert content
           }
       );
-  }
+    }
+
+    function loadPersoonlijkeGegevensContent()
+    {
+        chrome.runtime.sendMessage(
+            { action: "GET::contentPage", page: "persoonlijkegegevens"},
+            (response) => {
+                if (response.html) {
+                    placeholder.innerHTML = response.html;
+
+
+                    // hide weird scroll bar
+                    document.getElementById("ui-id-1").hidden = true;
+
+                    const tables = document.getElementsByClassName("luc2");
+                    
+                    
+
+                    const explanation = tables[1];
+                    const explanationContent = explanation.getElementsByClassName("Header")[0]
+                    
+                    const form = tables[2];
+                    console.log(form);
+
+
+                    // populate unchangable fields
+                    // studentid
+                    document.getElementById("Studentid").innerText = form.querySelector('#lblStamnummer').innerText;
+                    // things todo with main
+                    document.getElementById("FamilyName").innerText = form.querySelector("#lblNaam").innerText;
+                    document.getElementById("Name").innerText = form.querySelector("#lblVoornamen").innerText;
+                    // grayout roepnaam if it does not exist
+                    const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
+
+                    if(roepnaamText){
+                        document.getElementById("Callname").innerText = roepnaamText;
+                    }else{
+                        document.getElementById("Callname").innerText = "...";
+                        document.getElementById("callname-display").classList.add("text-gray-500");
+                    }
+
+                    document.getElementById("Nationality").innerText = form.querySelector("#lblNation").innerText;
+                    document.getElementById("SocSecNumber").innerText = form.querySelector("#lblRijksReg").innerText;
+                    
+                    document.getElementById("Birthdate").innerText = form.querySelector("#lblGebDatPl").innerText;
+                    document.getElementById("Married").innerText = form.querySelector("#lblBurnaam").innerText;
+                }
+            }
+        );
+    }
 
     function loadLogout() {
         const body = document.getElementsByTagName("body")[0];
