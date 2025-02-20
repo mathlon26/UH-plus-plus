@@ -2,6 +2,8 @@ var studentData = {};
 const DEBUG = true;
 
 function dutch_linkButtons() {
+  const roosterbtn = document.getElementById("uurRooster");
+
   const mijnburgerprofiel = document.getElementById("Menu1-menuItem002");
   const persoonlijkegegevens = document.getElementById("Menu1-menuItem005");
   const privacyvoorkeuren = document.getElementById("Menu1-menuItem006");
@@ -102,6 +104,12 @@ function dutch_linkButtons() {
       });
     }
   });
+
+  roosterbtn.addEventListener("click", () => {
+    let url = "https://mytimetable.uhasselt.be";
+    window.open(url, '_blank').focus();
+  });
+
 }
 
 function english_linkButtons() {}
