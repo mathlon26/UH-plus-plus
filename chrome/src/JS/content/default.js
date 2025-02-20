@@ -273,7 +273,8 @@ function english_linkButtons() {}
                     placeholder.innerHTML = response.html;
 
 
-
+                    // hide weird scroll bar
+                    document.getElementById("ui-id-1").hidden = true;
 
                     const tables = document.getElementsByClassName("luc2");
                     
@@ -282,24 +283,31 @@ function english_linkButtons() {}
                     const explanation = tables[1];
                     const explanationContent = explanation.getElementsByClassName("Header")[0]
                     
-
-                    document.getElementById("explanation").innerText = explanationContent.innerText;
-
                     const form = tables[2];
                     console.log(form);
+
+
                     // populate unchangable fields
-                    document.getElementById("Naam").innerText = form.querySelector("#lblNaam").innerText;
-                    document.getElementById("Voornamen").innerText = form.querySelector("#lblVoornamen").innerText;
+                    // studentid
+                    document.getElementById("Studentid").innerText = form.querySelector('#lblStamnummer').innerText;
+                    // things todo with main
+                    document.getElementById("FamilyName").innerText = form.querySelector("#lblNaam").innerText;
+                    document.getElementById("Name").innerText = form.querySelector("#lblVoornamen").innerText;
                     // grayout roepnaam if it does not exist
                     const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
 
                     if(roepnaamText){
-                        document.getElementById("Roepnaam").innerText = roepnaamText;
+                        document.getElementById("Callname").innerText = roepnaamText;
                     }else{
-                        console.log("gray");
-                        document.getElementById("roepnaam-display").classList.add("text-gray-500");
+                        document.getElementById("Callname").innerText = "...";
+                        document.getElementById("callname-display").classList.add("text-gray-500");
                     }
-                        
+
+                    document.getElementById("Nationality").innerText = form.querySelector("#lblNation").innerText;
+                    document.getElementById("SocSecNumber").innerText = form.querySelector("#lblRijksReg").innerText;
+                    
+                    document.getElementById("Birthdate").innerText = form.querySelector("#lblGebDatPl").innerText;
+                    document.getElementById("Married").innerText = form.querySelector("#lblBurnaam").innerText;
                 }
             }
         );
