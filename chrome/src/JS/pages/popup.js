@@ -18,8 +18,41 @@ const DEBUG = true;
         window.open("https://github.com/mathlon26/UH-plus-plus/issues");
       });
   }
+
+  function initDisableButton() {
+
+    function setSettingEnabled(_value) {
+        chrome.runtime.sendMessage({ action: "POST::settings", key:"enabled", value: _value });
+    }
+
+    const btn = document.getElementById("onOffSwitch");
+    const input = document.getElementById("onOffSwitch-input");
+
+    chrome.runtime.sendMessage(
+        { action: "GET::settings" },
+        (response) => {
+            if (response.settings) {
+                if (!response.settings.enabled){
+                    btn.click();
+                }
+            }
+        }
+    );
+
+    btn.addEventListener("click", (event) => {
+        console.log(input.getAttribute("checked"));
+        if (input.getAttribute("checked")  === "true" )  {
+            input.setAttribute("checked", "false");
+            setSettingEnabled("false");
+        } else {
+            input.setAttribute("checked", "true");
+            setSettingEnabled("true");
+        }
+    });
+  }
   function initPopup() {
     // run popup functions
+    initDisableButton();
     initSettingsButton();
     initBugreportButton();
   }
