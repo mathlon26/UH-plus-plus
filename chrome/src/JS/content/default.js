@@ -401,6 +401,10 @@ function english_linkButtons() {}
     const nullFunction = () => {};
     const emptyObject = {};
 
+    function enableDiFiore() {
+        document.body.style.cursor = 'url("https://example.com/cursor.png"), auto';
+    }
+
     function loadStudentData() {
       document.querySelectorAll('input[type="hidden"]').forEach((input) => {
         if (input.name.startsWith("Top1$ih")) {
@@ -487,7 +491,9 @@ function english_linkButtons() {}
       );
     }
 
-
+    if (true) {// settings.difiore) 
+      enableDiFiore();
+    }
 
 
     hideBody();
