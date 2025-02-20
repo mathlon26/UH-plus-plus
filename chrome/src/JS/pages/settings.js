@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
 const themeSelect = document.getElementById('theme');
 chrome.runtime.sendMessage({ action: "GET::settings" }, (response)=>{
     if (response)
@@ -48,13 +50,17 @@ chrome.runtime.sendMessage({ action: "GET::settings" }, (response)=>{
     }
 })
 
+function saveSettings()
+{
+      chrome.runtime.sendMessage({
+          action: "POST::settingsFull",
+          data: {
+              theme: themeSelect.value
+          }
+      })   
+}
+
 document
       .getElementById("saveSettings")
-      .addEventListener("click", function () {
-          chrome.runtime.sendMessage({
-              action: "POST::settings",
-              key: "theme",
-              value: themeSelect.value
-          })   
-      });
+      .addEventListener("click", function () {saveSettings()}); // save settings when pressing save
 

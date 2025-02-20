@@ -1,6 +1,7 @@
 // background.js
 
 let currentTab = "home";
+const DEBUG = true;
 
 
 
@@ -53,21 +54,32 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 const settings = result.settings || {}; // make sure settings is an object
                 settings[key] = value; // Update the setting
                 chrome.storage.local.set({settings: settings});
-                console.log("POST set ", key, value);
+                if(DEBUG)
+                {
+                    console.log("POST set ", key, value);
+                }
             })
         }
         return true;
+    }else if(message.action == "POST::settingsFull") // post a full json instead of just a single setting
+    {
+        const settings = message.data
+        if(settings)
+        {
+            chrome.storage.local.set({settings: settings});
+        }
     }
     else if (message.action == "GET::settings") {
-        console.log("Getting settings");
         // lees settings
         chrome.storage.local.get("settings", (result) => {
             const settings = result.settings || {}; // make sure settings is an object
-            console.log("Settings: ", settings)
+            if(DEBUG)
+            {
+                console.log("Settings: ", settings)
+            }
             if (settings)
             {
                 // reply with the settings
-                console.log("replying with: ", {settings: settings})
                 sendResponse({settings: settings});
                 //return true;
             }
