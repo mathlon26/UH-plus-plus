@@ -108,14 +108,6 @@ function english_linkButtons() {}
 
 (() => {
   function loadCustomPage(lang) {
-    if (DEBUG) {
-      document.getElementById("studentDataPre").textContent = JSON.stringify(
-        studentData,
-        null,
-        2
-      );
-    }
-
     function initNav() {
       let navWithLinks = document.getElementsByClassName("hasLinksNav");
       const navTab = document.getElementById("linksTab");
