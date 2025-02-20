@@ -262,7 +262,48 @@ function english_linkButtons() {}
               document.getElementById("content-list").innerHTML = listContent.outerHTML; // Use outerHTML to properly insert content
           }
       );
-  }
+    }
+
+    function loadPersoonlijkeGegevensContent()
+    {
+        chrome.runtime.sendMessage(
+            { action: "GET::contentPage", page: "persoonlijkegegevens"},
+            (response) => {
+                if (response.html) {
+                    placeholder.innerHTML = response.html;
+
+
+
+
+                    const tables = document.getElementsByClassName("luc2");
+                    
+                    
+
+                    const explanation = tables[1];
+                    const explanationContent = explanation.getElementsByClassName("Header")[0]
+                    
+
+                    document.getElementById("explanation").innerText = explanationContent.innerText;
+
+                    const form = tables[2];
+                    console.log(form);
+                    // populate unchangable fields
+                    document.getElementById("Naam").innerText = form.querySelector("#lblNaam").innerText;
+                    document.getElementById("Voornamen").innerText = form.querySelector("#lblVoornamen").innerText;
+                    // grayout roepnaam if it does not exist
+                    const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
+
+                    if(roepnaamText){
+                        document.getElementById("Roepnaam").innerText = roepnaamText;
+                    }else{
+                        console.log("gray");
+                        document.getElementById("roepnaam-display").classList.add("text-gray-500");
+                    }
+                        
+                }
+            }
+        );
+    }
 
     function loadLogout(tables) {
         const body = document.getElementsByTagName("body")[0];
