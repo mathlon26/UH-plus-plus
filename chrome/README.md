@@ -31,11 +31,11 @@ switch (route) {
 ```
 
 To implement a new content page function:
-    - 1. create a branch feature-< content name > from source: dev
-    - 2. add the function definition under the other, earlier content loader definitions
-    - 3. use the template bellow (replace 'Home' with the actual content name)
-    - 4. in `src/pages/content` create a html file and pass its name as value to 'page:' as seen bellow
-    - 5. use javascript magic to extract data from 'tables' and insert it into the injected html
+- 1. create a branch feature-< content name > from source: dev
+- 2. add the function definition under the other, earlier content loader definitions
+- 3. use the template bellow (replace 'Home' with the actual content name)
+- 4. in `src/pages/content` create a html file and pass its name as value to 'page:' as seen bellow
+- 5. use javascript magic to extract data from 'tables' and insert it into the injected html
 
 ```javascript
 function loadHomeContent(tables) {
