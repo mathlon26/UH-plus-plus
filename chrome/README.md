@@ -40,7 +40,7 @@ To implement a new content page function:
 ```javascript
 function loadHomeContent(tables) {
     chrome.runtime.sendMessage(
-        { action: "GET::contentPage", page: "home"},
+        { action: "GET::html", page: "home", lang:  settings_global.lang},
         (response) => {
             if (response.html) {
             placeholder.innerHTML = response.html;

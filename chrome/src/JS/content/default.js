@@ -14,15 +14,16 @@ function loadStudentData() {
 
 function updateSettings(callback) {
   let lang = studentData.Taal === "01" ? "nl" : "en";
-  chrome.runtime.sendMessage({action: "POST::settings", key: "lang", value: lang}, (response) =>  {
-    chrome.runtime.sendMessage({action: "GET::settings"}, (response) => {
-      settings_global = response.settings;
-      callback();
-    });
-  });
+  chrome.runtime.sendMessage(
+    { action: "POST::settings", key: "lang", value: lang },
+    (response) => {
+      chrome.runtime.sendMessage({ action: "GET::settings" }, (response) => {
+        settings_global = response.settings;
+        callback();
+      });
+    }
+  );
 }
-
-
 
 function dutch_linkButtons() {
   const roosterbtn = document.getElementById("uurRooster");
@@ -129,18 +130,15 @@ function dutch_linkButtons() {
 
   roosterbtn.addEventListener("click", () => {
     let url = "https://mytimetable.uhasselt.be";
-    window.open(url, '_blank').focus();
+    window.open(url, "_blank").focus();
   });
-
 }
 
-function english_linkButtons() {
-
-}
+function english_linkButtons() {}
 
 (() => {
   function loadCustomPage(lang) {
-    document.body.classList.add("overflow-x-hidden","min-h-screen");
+    document.body.classList.add("overflow-x-hidden", "min-h-screen");
     function initNav() {
       let navWithLinks = document.getElementsByClassName("hasLinksNav");
       const navTab = document.getElementById("linksTab");
@@ -231,210 +229,272 @@ function english_linkButtons() {
       }
     }
 
-
-
     const placeholder = document.getElementById("placeholder");
 
     function loadHomeContent() {
-        function capitalizeFirstLetter(str) {
-            if (!str) return str; // Handle empty strings
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-    
-        chrome.runtime.sendMessage(
-            { action: "GET::html", page: "home", lang: settings_global.lang },
-            (response) => {
-                if (response.html) {
-                    placeholder.innerHTML = response.html;
-                }
+      function capitalizeFirstLetter(str) {
+        if (!str) return str; // Handle empty strings
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
 
-                let table = null;
-                let listContent = null;
-                if (settings_global.lang == "nl") {
-                  table = document.getElementsByClassName("luc2")[0];
-                  listContent = table.querySelector("#Label3 ul");
-                }
-                else {
-                  table = document.getElementsByClassName("luc2")[0];
-                  listContent = table.querySelector("#Label4 ul");
-                }
-                
-                Array.from(listContent.children).forEach((child) => {
-                    child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
-                });
-    
-                document.getElementById("content-studentName").innerText = `${studentData.Voornaam} ${studentData.Naam}`;
-                document.getElementById("content-list").innerHTML = listContent.outerHTML; // Use outerHTML to properly insert content
-            }
-        );
+      chrome.runtime.sendMessage(
+        { action: "GET::html", page: "home", lang: settings_global.lang },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
+          }
+
+          let table = null;
+          let listContent = null;
+          if (settings_global.lang == "nl") {
+            table = document.getElementsByClassName("luc2")[0];
+            listContent = table.querySelector("#Label3 ul");
+          } else {
+            table = document.getElementsByClassName("luc2")[0];
+            listContent = table.querySelector("#Label4 ul");
+          }
+
+          Array.from(listContent.children).forEach((child) => {
+            child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
+          });
+
+          document.getElementById(
+            "content-studentName"
+          ).innerText = `${studentData.Voornaam} ${studentData.Naam}`;
+          document.getElementById("content-list").innerHTML =
+            listContent.outerHTML; // Use outerHTML to properly insert content
+        }
+      );
     }
 
     function loadMeldingenContent() {
       function capitalizeFirstLetter(str) {
-          if (!str) return str; // Handle empty strings
-          return str.charAt(0).toUpperCase() + str.slice(1);
+        if (!str) return str; // Handle empty strings
+        return str.charAt(0).toUpperCase() + str.slice(1);
       }
 
       const tables = document.getElementsByClassName("luc");
 
       chrome.runtime.sendMessage(
-          { action: "GET::contentPage", page: "mededelingen" },
-          (response) => {
-              if (response.html) {
-                  placeholder.innerHTML = response.html;
-              }
-
-              const table = tables[0];
-              const listContent = table.querySelector("#TMededeling");
-  
-              Array.from(listContent.children).forEach((child) => {
-                  child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
-              });
-  
-              document.getElementById("content-studentName").innerText = `${studentData.Voornaam} ${studentData.Naam}`;
-              document.getElementById("content-list").innerHTML = listContent.outerHTML; // Use outerHTML to properly insert content
+        {
+          action: "GET::html",
+          page: "mededelingen",
+          lang: settings_global.lang,
+        },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
           }
+
+          const table = tables[0];
+          const listContent = table.querySelector("#TMededeling");
+
+          Array.from(listContent.children).forEach((child) => {
+            child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
+          });
+
+          document.getElementById(
+            "content-studentName"
+          ).innerText = `${studentData.Voornaam} ${studentData.Naam}`;
+          document.getElementById("content-list").innerHTML =
+            listContent.outerHTML; // Use outerHTML to properly insert content
+        }
       );
     }
 
-    function loadPersoonlijkeGegevensContent()
-    {
-        chrome.runtime.sendMessage(
-            { action: "GET::contentPage", page: "persoonlijkegegevens"},
-            (response) => {
-                if (response.html) {
-                    placeholder.innerHTML = response.html;
+    function loadPersoonlijkeGegevensContent() {
+      chrome.runtime.sendMessage(
+        {
+          action: "GET::html",
+          page: "persoonlijkegegevens",
+          lang: settings_global.lang,
+        },
+        (response) => {
+          if (response.html) {
+            console.log(response.html);
+            placeholder.innerHTML = response.html;
 
+            // hide weird scroll bar
+            document.getElementById("ui-id-1").hidden = true;
 
-                    // hide weird scroll bar
-                    document.getElementById("ui-id-1").hidden = true;
+            const tables = document.getElementsByClassName("luc2");
 
-                    const tables = document.getElementsByClassName("luc2");
-                    
-                    
+            const explanation = tables[1];
+            const explanationContent =
+              explanation.getElementsByClassName("Header")[0];
 
-                    const explanation = tables[1];
-                    const explanationContent = explanation.getElementsByClassName("Header")[0]
-                    
-                    const form = tables[2];
-                    console.log(form);
+            const form = tables[2];
+            console.log(form);
 
+            // populate unchangable fields
+            // studentid
+            document.getElementById("Studentid").innerText =
+              form.querySelector("#lblStamnummer").innerText;
+            // things todo with main
+            document.getElementById("FamilyName").innerText =
+              form.querySelector("#lblNaam").innerText;
+            document.getElementById("Name").innerText =
+              form.querySelector("#lblVoornamen").innerText;
+            // grayout roepnaam if it does not exist
+            const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
 
-                    // populate unchangable fields
-                    // studentid
-                    document.getElementById("Studentid").innerText = form.querySelector('#lblStamnummer').innerText;
-                    // things todo with main
-                    document.getElementById("FamilyName").innerText = form.querySelector("#lblNaam").innerText;
-                    document.getElementById("Name").innerText = form.querySelector("#lblVoornamen").innerText;
-                    // grayout roepnaam if it does not exist
-                    const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
-
-                    if(roepnaamText){
-                        document.getElementById("Callname").innerText = roepnaamText;
-                    }else{
-                        document.getElementById("Callname").innerText = "...";
-                        document.getElementById("callname-display").classList.add("text-gray-500");
-                    }
-
-                    document.getElementById("Nationality").innerText = form.querySelector("#lblNation").innerText;
-                    document.getElementById("SocSecNumber").innerText = form.querySelector("#lblRijksReg").innerText;
-                    
-                    document.getElementById("Birthdate").innerText = form.querySelector("#lblGebDatPl").innerText;
-                    document.getElementById("Married").innerText = form.querySelector("#lblBurnaam").innerText;
-                }
+            if (roepnaamText) {
+              document.getElementById("Callname").innerText = roepnaamText;
+            } else {
+              document.getElementById("Callname").innerText = "...";
+              document
+                .getElementById("callname-display")
+                .classList.add("text-gray-500");
             }
-        );
+
+            document.getElementById("Nationality").innerText =
+              form.querySelector("#lblNation").innerText;
+            document.getElementById("SocSecNumber").innerText =
+              form.querySelector("#lblRijksReg").innerText;
+
+            document.getElementById("Birthdate").innerText =
+              form.querySelector("#lblGebDatPl").innerText;
+            document.getElementById("Married").innerText =
+              form.querySelector("#lblBurnaam").innerText;
+          }
+        }
+      );
     }
 
     function loadLogout() {
-        const body = document.getElementsByTagName("body")[0];
-        console.log(settings_global.lang);
-        chrome.runtime.sendMessage(
-            { action: "GET::html", page: "logout", lang: settings_global.lang },
-            (response) => {
-                if (response.html) {
-                    body.innerHTML = response.html;
-                }
-            }
-        );
+      const body = document.getElementsByTagName("body")[0];
+      console.log(settings_global.lang);
+      chrome.runtime.sendMessage(
+        { action: "GET::html", page: "logout", lang: settings_global.lang },
+        (response) => {
+          if (response.html) {
+            body.innerHTML = response.html;
+          }
+        }
+      );
+    }
+
+    function updateNavigationTab(currentTab) {
+      const navLinks = document.querySelectorAll("[navlink]");
+      let matchFound = false;
+      navLinks.forEach((link) => {
+        if (link.getAttribute("navlink") === currentTab) {
+          link.classList.add("selectedNav");
+          matchFound = true;
+        }
+      });
+
+      const route = window.location.pathname;
+      if (!matchFound || route === "/") {
+        const homeElement = document.getElementById("defaultLink");
+        if (homeElement) {
+          homeElement.classList.add("selectedNav");
+          navLinks.forEach((link) => {
+            link.classList.remove("selectedNav");
+          });
+        }
+      }
     }
 
     function loadContent() {
       const route = window.location.pathname;
+
 
       switch (route) {
         case "/Default.aspx":
           loadHomeContent();
           break;
         case "/sdsBurgeprofiel.aspx":
+          updateNavigationTab("navTabGegevens");
           loadBurgeprofielContent();
           break;
         case "/sdsAanvraagStudietraject.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadAanvraagStudieTrajectContent();
           break;
         case "/sdsTotOverIndTra.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadOpleidingsOnderdelenContent();
           break;
         case "/sdsStudiecontract.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadStudieContract();
           break;
         case "/sdsUitschrijven.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadUitschrijvenOpleidingContent();
           break;
         case "/sdsAantalKeerOpgenomen.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadInschrijvingsLimietContent();
           break;
         case "/sdsInschrijvingsgeld.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadStudieGeldContent();
           break;
         case "/sdsExCijf.aspx":
+          updateNavigationTab("navTabAdministratie");
           loadExamenCijfersContent();
           break;
         case "/sdsVerklaringOpEerDigex.aspx":
+          updateNavigationTab("navTabExamens");
           loadVerklaringOnlineExamenContent();
           break;
         case "/sdsPersGeg.aspx":
+          updateNavigationTab("navTabGegevens");
           loadPersoonlijkeGegevensContent();
           break;
         case "/sdsPrivacy.aspx":
+          updateNavigationTab("navTabGegevens");
           loadPrivacyContent();
           break;
         case "/sdsstudentenkaart.aspx":
+          updateNavigationTab("navTabGegevens");
           loadStudentenKaartContent();
           break;
         case "/sdsEID.aspx":
+          updateNavigationTab("navTabGegevens");
           loadEIDContent();
           break;
         case "/sdsDocumentenStudSecr.aspx":
+          updateNavigationTab("navTabFormulieren");
           loadFormulierenAttestenContent();
           break;
         case "/sdsDocumenten.aspx":
-          loadContent();
+          updateNavigationTab("navTabFormulieren");
+          loadFormulierenContent();
           break;
         case "/sdsLoopbaan.aspx":
+          updateNavigationTab("navTabStudie");
           loadLoopbaanContent();
           break;
         case "/sdsStudentPoint.aspx":
+          updateNavigationTab("navTabStudie");
           loadStudentPointContent();
           break;
         case "/sdsBijzondereOmstandigheid.aspx":
+          updateNavigationTab("navTabStudie");
           loadBijzondereOmstandighedenContent();
           break;
         case "/sdsMededelingen.aspx":
+          updateNavigationTab("navTabStudie");
           loadMeldingenContent();
           break;
         case "/sdsLicentie.aspx":
+          updateNavigationTab("navTabTools");
           loadSoftwareContent();
           break;
         case "/sdsJobstudentenPortaal.aspx":
+          updateNavigationTab("navTabWerk");
           loadJobstudentContent();
           break;
         case "/sdsActiviteitenStudNieuw.aspx?activiteit=STARTUP":
+          updateNavigationTab("navTabWerk");
           loadStartUpContent();
           break;
         case "/Shibboleth.sso/Logout":
-            loadLogout();
-            break;
+          loadLogout();
+          break;
         default:
           loadHomeContent();
           break;
@@ -566,8 +626,8 @@ function english_linkButtons() {
     }
   }
 
-    //  retrieve settings  and  do stuff based on them
-    //  make settings global
+  //  retrieve settings  and  do stuff based on them
+  //  make settings global
   // First: Remove the default styles and hide the websites content, replace it with the custom html
   loadStudentData();
   updateSettings(initDefaultWebFunctionality);
