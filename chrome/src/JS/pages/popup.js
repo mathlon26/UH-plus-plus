@@ -50,6 +50,7 @@ const DEBUG = true;
         }
     });
   }
+  
   function initPopup() {
     // run popup functions
     initDisableButton();

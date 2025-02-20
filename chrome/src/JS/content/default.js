@@ -116,6 +116,7 @@ function english_linkButtons() {}
 
 (() => {
   function loadCustomPage(lang) {
+    document.body.classList.add("overflow-x-hidden","min-h-screen");
     function initNav() {
       let navWithLinks = document.getElementsByClassName("hasLinksNav");
       const navTab = document.getElementById("linksTab");
