@@ -4,18 +4,6 @@ let currentTab = "home";
 const DEBUG = true;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  async function getContentPage(pageName) {
-    let url = `src/pages/content/${pageName}.html`;
-    try {
-      const response = await fetch(chrome.runtime.getURL(url));
-      const html = await response.text();
-      sendResponse({ html: html });
-    } catch (err) {
-      sendResponse({ error: err });
-    }
-    return true;
-  }
-
   if (message.action == "GET::custom_html") {
     var url =
       message.lang == "04"
@@ -27,15 +15,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       .then((html) => sendResponse({ html: html, lang: taal }))
       .catch((err) => sendResponse({ error: err }));
     return true;
-  } else if (message.action == "POST::updateCurrentTab") {
+  } else if (message.action == "GET::html"){
+    let lang = message.lang || "nl";
+    let page = message.page;
+    let url = `src/pages/content/${lang}/${page}.html`;
+    fetch(chrome.runtime.getURL(url))
+      .then((response) => response.text())
+      .then((html) => sendResponse({ html: html }))
+      .catch((err) => sendResponse({ error: err }));
+    return true;
+  }
+  else if (message.action == "POST::updateCurrentTab") {
     currentTab = message.data;
   } else if (message.action == "GET::currentTab") {
     sendResponse({ currentTab: currentTab });
     return false;
-  } else if (message.action == "GET::contentPage") {
-    getContentPage(message.page);
-    return true;
-  } else if (message.action == "POST::settings") {
+  }
+   else if (message.action == "POST::settings") {
     // save settings
     var key = message.key;
     var value = message.value;

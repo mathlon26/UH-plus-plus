@@ -134,7 +134,9 @@ function dutch_linkButtons() {
 
 }
 
-function english_linkButtons() {}
+function english_linkButtons() {
+
+}
 
 (() => {
   function loadCustomPage(lang) {
@@ -233,22 +235,30 @@ function english_linkButtons() {}
 
     const placeholder = document.getElementById("placeholder");
 
-    function loadHomeContent(tables) {
+    function loadHomeContent() {
         function capitalizeFirstLetter(str) {
             if (!str) return str; // Handle empty strings
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
     
         chrome.runtime.sendMessage(
-            { action: "GET::contentPage", page: "home" },
+            { action: "GET::html", page: "home", lang: settings_global.lang },
             (response) => {
                 if (response.html) {
                     placeholder.innerHTML = response.html;
                 }
 
-                const table = tables[0];
-                const listContent = table.querySelector("#Label3 ul");
-    
+                let table = null;
+                let listContent = null;
+                if (settings_global.lang == "nl") {
+                  table = document.getElementsByClassName("luc2")[0];
+                  listContent = table.querySelector("#Label3 ul");
+                }
+                else {
+                  table = document.getElementsByClassName("luc2")[0];
+                  listContent = table.querySelector("#Label4 ul");
+                }
+                
                 Array.from(listContent.children).forEach((child) => {
                     child.innerText = capitalizeFirstLetter(child.innerText); // Fixed 'chile' typo
                 });
@@ -287,11 +297,11 @@ function english_linkButtons() {}
       );
   }
 
-    function loadLogout(tables) {
+    function loadLogout() {
         const body = document.getElementsByTagName("body")[0];
-
+        console.log(settings_global.lang);
         chrome.runtime.sendMessage(
-            { action: "GET::contentPage", page: "logout" },
+            { action: "GET::html", page: "logout", lang: settings_global.lang },
             (response) => {
                 if (response.html) {
                     body.innerHTML = response.html;
@@ -301,84 +311,83 @@ function english_linkButtons() {}
     }
 
     function loadContent() {
-      const tables = document.getElementsByClassName("luc2");
       const route = window.location.pathname;
 
       switch (route) {
         case "/Default.aspx":
-          loadHomeContent(tables);
+          loadHomeContent();
           break;
         case "/sdsBurgeprofiel.aspx":
-          loadBurgeprofielContent(tables);
+          loadBurgeprofielContent();
           break;
         case "/sdsAanvraagStudietraject.aspx":
-          loadAanvraagStudieTrajectContent(tables);
+          loadAanvraagStudieTrajectContent();
           break;
         case "/sdsTotOverIndTra.aspx":
-          loadOpleidingsOnderdelenContent(tables);
+          loadOpleidingsOnderdelenContent();
           break;
         case "/sdsStudiecontract.aspx":
-          loadStudieContract(tables);
+          loadStudieContract();
           break;
         case "/sdsUitschrijven.aspx":
-          loadUitschrijvenOpleidingContent(tables);
+          loadUitschrijvenOpleidingContent();
           break;
         case "/sdsAantalKeerOpgenomen.aspx":
-          loadInschrijvingsLimietContent(tables);
+          loadInschrijvingsLimietContent();
           break;
         case "/sdsInschrijvingsgeld.aspx":
-          loadStudieGeldContent(tables);
+          loadStudieGeldContent();
           break;
         case "/sdsExCijf.aspx":
-          loadExamenCijfersContent(tables);
+          loadExamenCijfersContent();
           break;
         case "/sdsVerklaringOpEerDigex.aspx":
-          loadVerklaringOnlineExamenContent(tables);
+          loadVerklaringOnlineExamenContent();
           break;
         case "/sdsPersGeg.aspx":
-          loadPersoonlijkeGegevensContent(tables);
+          loadPersoonlijkeGegevensContent();
           break;
         case "/sdsPrivacy.aspx":
-          loadPrivacyContent(tables);
+          loadPrivacyContent();
           break;
         case "/sdsstudentenkaart.aspx":
-          loadStudentenKaartContent(tables);
+          loadStudentenKaartContent();
           break;
         case "/sdsEID.aspx":
-          loadEIDContent(tables);
+          loadEIDContent();
           break;
         case "/sdsDocumentenStudSecr.aspx":
-          loadFormulierenAttestenContent(tables);
+          loadFormulierenAttestenContent();
           break;
         case "/sdsDocumenten.aspx":
-          loadContent(tables);
+          loadContent();
           break;
         case "/sdsLoopbaan.aspx":
-          loadLoopbaanContent(tables);
+          loadLoopbaanContent();
           break;
         case "/sdsStudentPoint.aspx":
-          loadStudentPointContent(tables);
+          loadStudentPointContent();
           break;
         case "/sdsBijzondereOmstandigheid.aspx":
-          loadBijzondereOmstandighedenContent(tables);
+          loadBijzondereOmstandighedenContent();
           break;
         case "/sdsMededelingen.aspx":
           loadMeldingenContent();
           break;
         case "/sdsLicentie.aspx":
-          loadSoftwareContent(tables);
+          loadSoftwareContent();
           break;
         case "/sdsJobstudentenPortaal.aspx":
-          loadJobstudentContent(tables);
+          loadJobstudentContent();
           break;
         case "/sdsActiviteitenStudNieuw.aspx?activiteit=STARTUP":
-          loadStartUpContent(tables);
+          loadStartUpContent();
           break;
         case "/Shibboleth.sso/Logout":
-            loadLogout(tables);
+            loadLogout();
             break;
         default:
-          loadHomeContent(tables);
+          loadHomeContent();
           break;
       }
     }
