@@ -1,13 +1,14 @@
 // settings.js
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
-    const themeSelect = document.getElementById('theme');
     const customizeButton = document.getElementById('customizeButton');
     const customizationModal = document.getElementById('customizationModal');
     const closeModal = document.getElementById('closeModal');
     const saveColors = document.getElementById('saveColors');
     const bgColorInput = document.getElementById('bgColor');
     const textColorInput = document.getElementById('textColor');
+    
+
 
     // Load saved settings
     chrome.storage.sync.get(['theme', 'bgColor', 'textColor'], (data) => {
@@ -17,17 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         bgColorInput.value = data.bgColor || '#ffffff'; // Default to white
         textColorInput.value = data.textColor || '#000000'; // Default to black
     });
+    
+    
 
-    // Save settings on form submit
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const theme = themeSelect.value;
-        const notifications = notificationsCheckbox.checked;
-
-        chrome.storage.sync.set({ theme, notifications }, () => {
-            alert('Settings saved!');
-        });
-    });
 
     // Open customization modal
     customizeButton.addEventListener('click', () => {
@@ -41,12 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Save color settings
     saveColors.addEventListener('click', () => {
-        const bgColor = bgColorInput.value;
-        const textColor = textColorInput.value;
-
-        chrome.storage.sync.set({ bgColor, textColor }, () => {
-            alert('Color settings saved!');
-            customizationModal.classList.add('hidden');
-        });
+                
     });
 });
+
+const themeSelect = document.getElementById('theme');
+chrome.runtime.sendMessage({ action: "GET::settings" }, (response)=>{
+    if (response)
+    {
+        const settings = response.settings;
+        themeSelect.value = settings.theme
+
+    }
+})
+
+document
+      .getElementById("saveSettings")
+      .addEventListener("click", function () {
+          chrome.runtime.sendMessage({
+              action: "POST::settings",
+              key: "theme",
+              value: themeSelect.value
+          })   
+      });
+
