@@ -12,85 +12,128 @@
         <span class="text-red-500">'Wijzigingen aanvragen'</span> .
     </div>
 
-    <hr class="py-4 mt-4">
+      <hr class="py-4 mt-4">
 
-    <div class="space-y-4"> <!-- unchangable -->
-        <div class="grid grid-cols-2 gap-4 justify-center items-center mx-auto">
-            <div>
-                <label for="Name" class="block mb-2 text-sm font-medium text-gray-900">Voornaam</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-user-line text-gray-500"></i>
+      <div class="space-y-4"> <!-- unchangable -->
+          <div class="grid grid-cols-2 gap-6 justify-center items-center mx-auto">
+              <div>
+                  <label for="Name" class="block mb-2 text-sm font-medium text-gray-900">Voornaam</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-user-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="Name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="John">
                   </div>
-                  <input disabled type="text" id="Name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="John">
-                </div>
-            </div>
-            <div>
-                <label for="FamName" class="block mb-2 text-sm font-medium text-gray-900">Naam</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-user-line text-gray-500"></i>
-                </div>
-                  <input disabled type="text" id="FamName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="Doe">
-                </div>
-            </div>
-            <div>
-                <label for="StudentID" class="block mb-2 text-sm font-medium text-gray-900">Studentennummer</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-info-card-line text-gray-500"></i>
+              </div>
+              <div>
+                  <label for="FamName" class="block mb-2 text-sm font-medium text-gray-900">Naam</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-user-line text-gray-500"></i>
                   </div>
-                  <input disabled type="text" id="StudentID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="XXXXXXX">
-                </div>
-            </div>
-            <div>
-                <label for="CallName" class="block mb-2 text-sm font-medium text-gray-900">Roepnaam</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-megaphone-line text-gray-500"></i>
+                    <input disabled type="text" id="FamName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="Doe">
                   </div>
-                  <input disabled type="text" id="CallName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="None">
-                </div>
-            </div>
-            <div>
-                <label for="BirthPlace" class="block mb-2 text-sm font-medium text-gray-900">Geboortedatum en - plaats</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-hospital-line text-gray-500"></i>
+              </div>
+              <div>
+                  <label for="StudentID" class="block mb-2 text-sm font-medium text-gray-900">Studentennummer</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-info-card-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="StudentID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="XXXXXXX">
                   </div>
-                  <input disabled type="text" id="BirthPlace" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="00/00/0000 Hasselt">
-                </div>
-            </div>
-            <div>
-                <label for="Nationality" class="block mb-2 text-sm font-medium text-gray-900">Nationaliteit</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-flag-line text-gray-500"></i>
+              </div>
+              <div>
+                  <label for="CallName" class="block mb-2 text-sm font-medium text-gray-900">Roepnaam</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-megaphone-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="CallName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="None">
                   </div>
-                  <input disabled type="text" id="Nationality" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="Mars">
-                </div>
-            </div>
-            <div>
-                <label for="SocSec" class="block mb-2 text-sm font-medium text-gray-900">Rijksregisternummer</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-pass-valid-line text-gray-500"></i>
+              </div>
+              <div>
+                  <label for="BirthPlace" class="block mb-2 text-sm font-medium text-gray-900">Geboortedatum en - plaats</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-hospital-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="BirthPlace" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="00/00/0000 Hasselt">
                   </div>
-                  <input disabled type="text" id="SocSec" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="XXXXXXXXXXX">
-                </div>
-            </div>
-            <div>
-                <label for="Married" class="block mb-2 text-sm font-medium text-gray-900">Burgerlijke staat</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <i class="ri-diamond-ring-line text-gray-500"></i>
+              </div>
+              <div>
+                  <label for="Nationality" class="block mb-2 text-sm font-medium text-gray-900">Nationaliteit</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-flag-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="Nationality" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="Mars">
                   </div>
-                  <input disabled type="text" id="Married" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="None">
-                </div>
+              </div>
+              <div>
+                  <label for="SocSec" class="block mb-2 text-sm font-medium text-gray-900">Rijksregisternummer</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-pass-valid-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="SocSec" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="XXXXXXXXXXX">
+                  </div>
+              </div>
+              <div>
+                  <label for="Married" class="block mb-2 text-sm font-medium text-gray-900">Burgerlijke staat</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="ri-diamond-ring-line text-gray-500"></i>
+                    </div>
+                    <input disabled type="text" id="Married" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="None">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="grid grid-cols-2 mt-6 gap-6 justify-center items-center mx-auto">
+          <div class="flex gap-4 justify-between">
+            <div class="w-full">
+            <label for="Street" class="block mb-2 text-sm font-medium text-gray-900">Straat</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <i class="ri-user-line text-gray-500"></i>
+              </div>
+              <input type="text" id="Street" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="Placeholder">
             </div>
-
-            
         </div>
+        <div class="w-1/6">
+          <label for="Number" class="block mb-2 text-sm font-medium text-gray-900">Nr.</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            </div>
+            <input type="text" id="Nummer" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5" placeholder="-">
+          </div>
+        </div>
+        <div class="w-1/6">
+          <label for="BusNumber" class="block mb-2 text-sm font-medium text-gray-900">Bus</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            </div>
+            <input type="text" id="BusNumber" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5" placeholder="-">
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="country" class="block mb-2 text-sm font-medium text-gray-900">Land</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <i class="ri-global-line text-gray-500"></i>
+          </div>
+          <select id="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5">
+            <option value="">Selecteer een land</option>
+            <option value="BE">België</option>
+            <option value="DE">Duitsland</option>
+          </select>
+        </div>
+      </div>
+        
     </div>
     </div>
+
+</div>
 </div>
