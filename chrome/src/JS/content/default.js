@@ -679,7 +679,7 @@ function english_linkButtons() {}
 
     let settings = settings_global;
     if (settings.enabled == "true") {
-      //hideBody();
+      hideBody();
       disableFunctions();
       removeDefaultStyling();
       loadRemixIcons();
