@@ -90,7 +90,10 @@
               </div>
           </div>
       </div>
-      <div class="grid grid-cols-2 mt-6 gap-6 justify-center items-center mx-auto">
+      <div class="mt-6 mx-auto">
+        <label class="block mb-2 text-sm font-bold text-gray-900">Thuisadres</label>
+      </div>
+      <div class="grid grid-cols-2 gap-6 justify-center items-center mx-auto">
           <div class="flex gap-4 justify-between">
             <div class="w-full">
             <label for="Street" class="block mb-2 text-sm font-medium text-gray-900">Straat</label>
@@ -132,6 +135,51 @@
         </div>
       </div>
         
+    </div>
+    <div class="mt-6 mx-auto">
+        <label class="block mb-2 text-sm font-bold text-gray-900">Studieadres</label>
+    </div>
+    <div class="grid grid-cols-2 gap-6 justify-center items-center mx-auto">
+          <div class="flex gap-4 justify-between">
+            <div class="w-full">
+            <label for="StudStreet" class="block mb-2 text-sm font-medium text-gray-900">Straat</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <i class="ri-user-line text-gray-500"></i>
+              </div>
+              <input type="text" id="StudStreet" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5" placeholder="Placeholder">
+            </div>
+        </div>
+        <div class="w-1/6">
+          <label for="StudNumber" class="block mb-2 text-sm font-medium text-gray-900">Nr.</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            </div>
+            <input type="text" id="StudNumber" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5" placeholder="-">
+          </div>
+        </div>
+        <div class="w-1/6">
+          <label for="StudBusNumber" class="block mb-2 text-sm font-medium text-gray-900">Bus</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            </div>
+            <input type="text" id="StudBusNumber" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5" placeholder="-">
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="StudCountry" class="block mb-2 text-sm font-medium text-gray-900">Land</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <i class="ri-global-line text-gray-500"></i>
+          </div>
+          <select id="StudCountry" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5">
+            <option value="">Selecteer een land</option>
+            <option value="BE">België</option>
+            <option value="DE">Duitsland</option>
+          </select>
+        </div>
+      </div>
     </div>
     </div>
 
