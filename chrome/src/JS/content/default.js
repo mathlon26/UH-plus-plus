@@ -310,16 +310,61 @@ function english_linkButtons() {}
           lang: settings_global.lang,
         },
         (response) => {
-          if (response.html) {
+        if (response.html) {
             console.log(response.html);
             placeholder.innerHTML = response.html;
+
+            function setupInputField(newField, origField)
+            {
+                if(origField.value)
+                {
+                    newField.value = origField.value;
+                }
+                newField.addEventListener("input", () => {
+                    origField.value = newField.value;
+                })
+
+            }
+
+            function setupSelector(newSelector, origSelector)
+            {
+                if(origSelector.value)
+                {
+                    newSelector.value = origSelector.value
+                }
+
+                newSelector.innerHTML = origSelector.innerHTML;
+
+                newSelector.addEventListener("onchange", ()=>{
+                    origSelector.value = newSelector.value;
+                })
+                    
+            }
+
+            // html elements
+            // unchangable
+            const studentId = document.getElementById("StudentID");
+            const famName = document.getElementById("FamName");
+            const name = document.getElementById("Name");
+            const callName = document.getElementById("CallName");
+            const nationality = document.getElementById("Nationality");
+            const socSecNumber = document.getElementById("SocSec");
+            const birth = document.getElementById("BirthPlace");
+            const married = document.getElementById("Married");
+
+            // changable
+            const street = document.getElementById("Street");
+            const streetNumber = document.getElementById("Number");
+            const busNumber = document.getElementById("BusNumber");
+            const country = document.getElementById("Country");
 
             // hide weird scroll bar
             document.getElementById("ui-id-1").hidden = true;
 
             const tables = document.getElementsByClassName("luc2");
 
-            const explanation = tables[1];
+            const explanation = tables
+            [1];
             const explanationContent =
               explanation.getElementsByClassName("Header")[0];
 
@@ -328,44 +373,51 @@ function english_linkButtons() {}
 
             // populate unchangable fields
             // studentid
-            document.getElementById("StudentID").value =
+            studentId.value =
               form.querySelector("#lblStamnummer").innerText;
             // things todo with main
-            document.getElementById("FamName").value =
+            famName.value =
               form.querySelector("#lblNaam").innerText;
-            document.getElementById("Name").value =
+            name.value =
               form.querySelector("#lblVoornamen").innerText;
             // grayout roepnaam if it does not exist
             const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
 
             if (roepnaamText) {
-              document.getElementById("CallName").value = roepnaamText;
+              callName.value = roepnaamText;
             } else {
-              document.getElementById("CallName").value = "None";
-              document
-                .getElementById("CallName")
-                .classList.add("italic");
+              callName.value = "None";
+              callName.classList.add("italic");
             }
 
-            document.getElementById("Nationality").value =
+            nationality.value =
               form.querySelector("#lblNation").innerText;
-            document.getElementById("SocSec").value =
+            socSecNumber.value =
               form.querySelector("#lblRijksReg").innerText;
 
-            document.getElementById("BirthPlace").value =
+            birth.value =
               form.querySelector("#lblGebDatPl").innerText;
             const marriedText = form.querySelector("#lblBurnaam").innerText;
             if (marriedText) {
-              document.getElementById("Married").value =
+              married.value =
               form.querySelector("#lblBurnaam").innerText;
             } else {
-              document.getElementById("Married").value = "None";
-              document
-                .getElementById("Married")
+              married.value = "None";
+              married
                 .classList.add("italic");
             }
-              
-          }
+
+
+            // inputfields
+            // street
+            setupInputField(street, form.querySelector("#tbWstraat"));
+            
+            setupInputField(streetNumber, form.querySelector("#tbWhuisnr"));
+            setupInputField(busNumber, form.querySelector("#tbWbusnr"));
+
+            setupSelector(country, form.querySelector("#hpDomicilieAdres_ddlLand"));
+            
+        }
         }
       );
     }
