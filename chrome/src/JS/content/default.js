@@ -310,11 +310,12 @@ function english_linkButtons() {}
           lang: settings_global.lang,
         },
         (response) => {
-          if (response.html) {
+        if (response.html) {
             console.log(response.html);
             placeholder.innerHTML = response.html;
 
             // html elements
+            // unchangable
             const studentId = document.getElementById("StudentID");
             const famName = document.getElementById("FamName");
             const name = document.getElementById("Name");
@@ -323,6 +324,9 @@ function english_linkButtons() {}
             const socSecNumber = document.getElementById("SocSec");
             const birth = document.getElementById("BirthPlace");
             const married = document.getElementById("Married");
+
+            // changable
+            const street = document.getElementById("Street");
 
             // hide weird scroll bar
             document.getElementById("ui-id-1").hidden = true;
@@ -371,8 +375,17 @@ function english_linkButtons() {}
               married
                 .classList.add("italic");
             }
+
+
+            // inputfields
+            const origStreet = document.querySelector("#tbWstraat");
+            street.value = origStreet.value;
+            street.addEventListener("input", () => {
+                origStreet.value = street.value;
+            })
+
               
-          }
+        }
         }
       );
     }
@@ -634,7 +647,7 @@ function english_linkButtons() {}
 
     let settings = settings_global;
     if (settings.enabled == "true") {
-      hideBody();
+      //hideBody();
       disableFunctions();
       removeDefaultStyling();
       loadRemixIcons();
