@@ -358,6 +358,10 @@ function english_linkButtons() {}
             const busNumber = document.getElementById("BusNumber");
             const country = document.getElementById("Country");
 
+            const studStreet = document.getElementById("StudStreet");
+            const studStreetNumber = document.getElementById("StudNumber");
+            const studBusNumber = document.getElementById("StudBusNumber");
+            const studCountry = document.getElementById("StudCountry");
             // hide weird scroll bar
             document.getElementById("ui-id-1").hidden = true;
 
@@ -409,7 +413,8 @@ function english_linkButtons() {}
 
 
             // inputfields
-            // street
+
+            //home address
             setupInputField(street, form.querySelector("#tbWstraat"));
             
             setupInputField(streetNumber, form.querySelector("#tbWhuisnr"));
@@ -417,6 +422,13 @@ function english_linkButtons() {}
 
             setupSelector(country, form.querySelector("#hpDomicilieAdres_ddlLand"));
             
+            //study address
+            setupInputField(studStreet, form.querySelector("#tbSstraat"));
+            
+            setupInputField(studStreetNumber, form.querySelector("#tbShuisnr"));
+            setupInputField(studBusNumber, form.querySelector("#tbSbusnr"));
+
+            setupSelector(studCountry, form.querySelector("#hpStudieAdres_ddlLand"));
         }
         }
       );
