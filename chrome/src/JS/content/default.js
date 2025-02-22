@@ -314,6 +314,33 @@ function english_linkButtons() {}
             console.log(response.html);
             placeholder.innerHTML = response.html;
 
+            function setupInputField(newField, origField)
+            {
+                if(origField.value)
+                {
+                    newField.value = origField.value;
+                }
+                newField.addEventListener("input", () => {
+                    origField.value = newField.value;
+                })
+
+            }
+
+            function setupSelector(newSelector, origSelector)
+            {
+                if(origSelector.value)
+                {
+                    newSelector.value = origSelector.value
+                }
+
+                newSelector.innerHTML = origSelector.innerHTML;
+
+                newSelector.addEventListener("onchange", ()=>{
+                    origSelector.value = newSelector.value;
+                })
+                    
+            }
+
             // html elements
             // unchangable
             const studentId = document.getElementById("StudentID");
@@ -327,13 +354,17 @@ function english_linkButtons() {}
 
             // changable
             const street = document.getElementById("Street");
+            const streetNumber = document.getElementById("Number");
+            const busNumber = document.getElementById("BusNumber");
+            const country = document.getElementById("Country");
 
             // hide weird scroll bar
             document.getElementById("ui-id-1").hidden = true;
 
             const tables = document.getElementsByClassName("luc2");
 
-            const explanation = tables[1];
+            const explanation = tables
+            [1];
             const explanationContent =
               explanation.getElementsByClassName("Header")[0];
 
@@ -378,13 +409,14 @@ function english_linkButtons() {}
 
 
             // inputfields
-            const origStreet = document.querySelector("#tbWstraat");
-            street.value = origStreet.value;
-            street.addEventListener("input", () => {
-                origStreet.value = street.value;
-            })
+            // street
+            setupInputField(street, form.querySelector("#tbWstraat"));
+            
+            setupInputField(streetNumber, form.querySelector("#tbWhuisnr"));
+            setupInputField(busNumber, form.querySelector("#tbWbusnr"));
 
-              
+            setupSelector(country, form.querySelector("#hpDomicilieAdres_ddlLand"));
+            
         }
         }
       );
