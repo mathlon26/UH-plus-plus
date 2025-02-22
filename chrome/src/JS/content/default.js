@@ -314,6 +314,16 @@ function english_linkButtons() {}
             console.log(response.html);
             placeholder.innerHTML = response.html;
 
+            // html elements
+            const studentId = document.getElementById("StudentID");
+            const famName = document.getElementById("FamName");
+            const name = document.getElementById("Name");
+            const callName = document.getElementById("CallName");
+            const nationality = document.getElementById("Nationality");
+            const socSecNumber = document.getElementById("SocSec");
+            const birth = document.getElementById("BirthPlace");
+            const married = document.getElementById("Married");
+
             // hide weird scroll bar
             document.getElementById("ui-id-1").hidden = true;
 
@@ -328,40 +338,37 @@ function english_linkButtons() {}
 
             // populate unchangable fields
             // studentid
-            document.getElementById("StudentID").value =
+            studentId.value =
               form.querySelector("#lblStamnummer").innerText;
             // things todo with main
-            document.getElementById("FamName").value =
+            famName.value =
               form.querySelector("#lblNaam").innerText;
-            document.getElementById("Name").value =
+            name.value =
               form.querySelector("#lblVoornamen").innerText;
             // grayout roepnaam if it does not exist
             const roepnaamText = form.querySelector("#lblRoepnaam").innerText;
 
             if (roepnaamText) {
-              document.getElementById("CallName").value = roepnaamText;
+              callName.value = roepnaamText;
             } else {
-              document.getElementById("CallName").value = "None";
-              document
-                .getElementById("CallName")
-                .classList.add("italic");
+              callName.value = "None";
+              callName.classList.add("italic");
             }
 
-            document.getElementById("Nationality").value =
+            nationality.value =
               form.querySelector("#lblNation").innerText;
-            document.getElementById("SocSec").value =
+            socSecNumber.value =
               form.querySelector("#lblRijksReg").innerText;
 
-            document.getElementById("BirthPlace").value =
+            birth.value =
               form.querySelector("#lblGebDatPl").innerText;
             const marriedText = form.querySelector("#lblBurnaam").innerText;
             if (marriedText) {
-              document.getElementById("Married").value =
+              married.value =
               form.querySelector("#lblBurnaam").innerText;
             } else {
-              document.getElementById("Married").value = "None";
-              document
-                .getElementById("Married")
+              married.value = "None";
+              married
                 .classList.add("italic");
             }
               
