@@ -27,6 +27,8 @@ function updateSettings(callback) {
 
 function dutch_linkButtons() {
   const roosterbtn = document.getElementById("uurRooster");
+  const roosterbtn2 = document.getElementById("uurexamenroosters");
+  const blackboardbtn = document.getElementById("blackboard");
   const mijnburgerprofiel = document.getElementById("Menu1-menuItem002");
   const persoonlijkegegevens = document.getElementById("Menu1-menuItem005");
   const privacyvoorkeuren = document.getElementById("Menu1-menuItem006");
@@ -58,7 +60,6 @@ function dutch_linkButtons() {
     document.getElementById("Menu1-menuItem015");
   const verklaringdigitaalexamen = document.getElementById("Menu1-menuItem016");
   const exchangeportaal = document.getElementById("Menu1-menuItem018");
-  const uurexamenroosters = document.getElementById("Menu1-menuItem020");
   const onderwijsevaluatie = document.getElementById("Menu1-menuItem027");
   const meldingendienstonderwijs = document.getElementById("Menu1-menuItem029");
   const formulierenattestenovereenkomsten = document.getElementById(
@@ -72,7 +73,6 @@ function dutch_linkButtons() {
   const jobstudentportaal = document.getElementById("Menu1-menuItem034");
   const studentstartup = document.getElementById("Menu1-menuItem038");
   const registrerenvoor = document.getElementById("Menu1-menuItem039");
-  const blackboard = document.getElementById("Menu1-menuItem040");
   const initieelpaswoord = document.getElementById("Menu1-menuItem042");
   const campussoftware = document.getElementById("Menu1-menuItem044");
   const laptop = document.getElementById("Menu1-menuItem045");
@@ -95,7 +95,6 @@ function dutch_linkButtons() {
     meldingafwezigheideninhaalexamen: meldingafwezigheideninhaalexamen,
     verklaringdigitaalexamen: verklaringdigitaalexamen,
     exchangeportaal: exchangeportaal,
-    uurexamenroosters: uurexamenroosters,
     onderwijsevaluatie: onderwijsevaluatie,
     meldingendienstonderwijs: meldingendienstonderwijs,
     formulierenattestenovereenkomsten: formulierenattestenovereenkomsten,
@@ -105,7 +104,6 @@ function dutch_linkButtons() {
     jobstudentportaal: jobstudentportaal,
     studentstartup: studentstartup,
     registrerenvoor: registrerenvoor,
-    blackboard: blackboard,
     initieelpaswoord: initieelpaswoord,
     campussoftware: campussoftware,
     laptop: laptop,
@@ -127,11 +125,23 @@ function dutch_linkButtons() {
       });
     }
   });
-
+  
   roosterbtn.addEventListener("click", () => {
     let url = "https://mytimetable.uhasselt.be";
     window.open(url, "_blank").focus();
   });
+
+  roosterbtn2.addEventListener("click", (e) => {
+    e.preventDefault();
+    let url = "https://mytimetable.uhasselt.be";
+    window.open(url, "_blank").focus();
+  })
+
+  blackboardbtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let url = "https://bb.uhasselt.be/ultra/stream";
+    window.open(url, "_blank").focus();
+  })
 }
 
 function english_linkButtons() {}
