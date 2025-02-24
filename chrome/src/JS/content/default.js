@@ -2,13 +2,17 @@ var studentData = {};
 const DEBUG = true;
 let settings_global = {};
 
-function loadStudentData() {
+function loadStudentData(callback1, callback2) {
   document.querySelectorAll('input[type="hidden"]').forEach((input) => {
     if (input.name.startsWith("Top1$ih")) {
       var key = input.name.replace("Top1$ih", "");
       var key = key.replace("Top", "");
       studentData[key] = input.value || null;
     }
+  });
+  chrome.runtime.sendMessage({action: "POST::settings", key: "student_data", value: studentData}, (response) => {
+    console.log(studentData);
+    callback1(callback2);
   });
 }
 
@@ -321,7 +325,6 @@ function english_linkButtons() {}
         },
         (response) => {
           if (response.html) {
-            console.log(response.html);
             placeholder.innerHTML = response.html;
 
             // hide weird scroll bar
@@ -334,7 +337,6 @@ function english_linkButtons() {}
               explanation.getElementsByClassName("Header")[0];
 
             const form = tables[2];
-            console.log(form);
 
             // populate unchangable fields
             // studentid
@@ -382,7 +384,6 @@ function english_linkButtons() {}
 
     function loadLogout() {
       const body = document.getElementsByTagName("body")[0];
-      console.log(settings_global.lang);
       chrome.runtime.sendMessage(
         { action: "GET::html", page: "logout", lang: settings_global.lang },
         (response) => {
@@ -652,8 +653,7 @@ function english_linkButtons() {}
   //  retrieve settings  and  do stuff based on them
   //  make settings global
   // First: Remove the default styles and hide the websites content, replace it with the custom html
-  loadStudentData();
-  updateSettings(initDefaultWebFunctionality);
+  loadStudentData(updateSettings, initDefaultWebFunctionality);
 })();
 
 (() => {

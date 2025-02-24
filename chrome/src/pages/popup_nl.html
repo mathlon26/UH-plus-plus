@@ -1,4 +1,4 @@
-<div class="flex flex-col bg-white min-w-80 min-h-80 p-4">
+<div class="flex flex-col bg-white p-4">
     <div class="flex items-center justify-center space-x-2 mb-3">
         <h1 class="text-2xl font-bold">UHasselt</h1>
         <img
@@ -6,13 +6,58 @@
             src="../resources/images/icon-128.png"
             alt="logo" />
     </div>
-    
+
     <main>
-        <div class="flex flex-col welcome">
+        <div class="flex flex-col welcome justify-center items-center">
             <div class="flex items-center justify-center space-x-2 text-2xl">
                 <h2>Welkom <span id="usernameDisplay"></span></h2>
             </div>
+            <div
+                class=" h-[189px] w-[300px] my-3 flex-col rounded-xl overflow-x-hidden relative shadow-xl">
+                <div class=" h-[74px] bg-red-500 flex">
+                    <div class="w-[10.5px]"></div>
+                    <div
+                        class="w-[3.5px] h-[63.5px] bg-white mt-[10.52px]"></div>
+                    <div class="h-[3px] w-[286px] bg-white mt-[10.52px]"></div>
+                </div>
+                <div class="h-[115px] bg-white flex">
+                    <div class="w-[10.5px]"></div>
+                    <div class="w-[3.5px] bg-red-500"></div>
+                </div>
+                <div id="sc-logo"
+                    class="absolute top-[10.5px] left-[10.5px] w-[126px]">
+                    <img
+                        src="https://www.uhasselt.be/media/un0borqa/uhasselt-liggend-wit.png?width=800&height=189.61625282167043"
+                        alt>
+                    <p
+                        class="pl-6 pt-[5px] text-white font-extrabold leading-3 tracking-wider">STUDENTENKAART</p>
+                    <p
+                        class="pl-6 text-white italic leading-3 tracking-wider">STUDENTCARD</p>
+                    <p id="sc-name"
+                        class="pl-6 mt-[5px] text-gray-900 tracking-wider font-semibold"></p>
+                    <p id="sc-birthdate"
+                        class="pl-6 text-gray-900 text-xs leading-3 tracking-wider font-semibold"></p>
+                    <p id="sc-nummer"
+                        class="pl-6 text-gray-900 text-lg leading-8"></p>
+                    <p id="sc-bottom"
+                        class="pl-6 text-gray-900 pt-[10px] tracking-tight text-lg font-semibold"></p>
+                </div>
+                <div id="sc-foto"
+                    class="absolute right-[14px] top-[3.5px] bg-white h-[115px] w-[91px] p-[3.5px]">
+                    <div class="w-full h-full bg-red-500">
+                        <img id="student-img" src alt="Loading Picture...">
+                    </div>
+                </div>
+                <div class="absolute right-[3.5px] bottom-[10px]">
+                    <div class="flex-col justify-center items-center text-center">
+                        <p id="barcode"></p>
+                        <img class="h-[30px] w-[160px]" id="barcode-img" src alt="Loading barcode...">
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </main>
     <div class="flex justify-center space-x-4">
         <button
@@ -21,7 +66,8 @@
     </div>
     <footer class="mt-auto">
         <div class=" flex mx-auto justify-center items-center">
-            <label class="relative flex justify-between items-center p-2 text-xl">
+            <label
+                class="relative flex justify-between items-center p-2 text-xl">
                 <input id="onOffSwitch-input" type="checkbox"
                     class="absolute left-1/2 -translate-x-1/2 w-full h-full rounded-md" />
             </label>
