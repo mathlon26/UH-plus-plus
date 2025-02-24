@@ -23,7 +23,7 @@ let settings_global = {};
     document
       .getElementById("bugreportButton")
       .addEventListener("click", function () {
-        window.open("https://github.com/mathlon26/UH-plus-plus/issues");
+        window.open("https://github.com/mathlon26/UH-plus-plus/issues/new");
       });
   }
 
