@@ -514,6 +514,10 @@ function english_linkButtons() {}
         case "/Shibboleth.sso/Logout":
           loadLogout();
           break;
+        case "/pdf/Leerkrediet.pdf", "/pdf/Plattegrond%20Campusshop%20Xod%20Diepenbeek.pdf", "/pdf/Plattegrond%20Campusshop%20Xod%20Hasselt.pdf":
+          document.getElementById("customBody").remove();
+          document.getElementsByTagName("embed")[0].classList.add("h-screen");
+          break;
         default:
           loadHomeContent();
           break;
