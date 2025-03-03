@@ -74,7 +74,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     .then((html) => {
       sendResponse({ 
         src: html.match(/<img[^>]*name=["']student["'][^>]*src=["]([^"]+)["']/i)[1].trim(),
-        bod: html.match(/<span[^>]*id=["']lblGebDat["'][^>]*>([^<]+)<\/span>/i)[1].trim(),
+        dob: html.match(/<span[^>]*id=["']lblGebDat["'][^>]*>([^<]+)<\/span>/i)[1].trim(),
         uh: html.match(/<span[^>]*id=["']lbltagId["'][^>]*>([^<]+)<\/span>/i)[1].trim(),
         barcode: html.match(/<span[^>]*id=["']lblbarcode["'][^>]*>([^<]+)<\/span>/i)[1].trim(),
         barcode_src: "https://mijnstudentendossier.uhasselt.be/sdsStudentenkaartBarcode.ashx"
