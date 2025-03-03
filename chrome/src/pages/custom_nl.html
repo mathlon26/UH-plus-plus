@@ -4,25 +4,14 @@
     <div class="mx-auto">
       <div class="flex justify-evenly h-16">
         <!-- Left side: Logo and Title -->
-        <div class="flex">
-          <div class="flex items-center ml-4">
-            <h1 class="text-xl font-bold text-gray-900">UHasselt
-              Studentendossier</h1>
-          </div>
+        <div class="flex items-center">
+          <a href="https://www.uhasselt.be" class="flex items-center">
+            <img class=" h-9 w-auto" src="https://www.uhasselt.be/media/dvijqpql/uhasselt-liggend.jpg?width=307&height=73&mode=max" alt="UHasselt logo">
+          </a>
         </div>
 
         <!-- Right side: Navigation (Desktop) -->
         <nav class="flex items-center">
-          <!-- Add your navigation links here -->
-          <a href="/"
-            class="px-3 py-2 text-gray-700 hover:text-gray-900">Home</a>
-          <a href="/"
-            class="px-3 py-2 text-gray-700 hover:text-gray-900">Profiel</a>
-          <a href="/"
-            class="px-3 py-2 text-gray-700 hover:text-gray-900">Registreren
-          </a>
-
-
           <a href id="uurRooster"
             class="px-3 py-2 text-red-700 hover:text-red-900">
             Rooster
@@ -35,7 +24,7 @@
           </a>
 
           <a href id="logOut"
-            class="px-3 ml-4 py-2 text-gray-700 hover:text-gray-900">
+            class="px-3 py-2 text-gray-700 hover:text-gray-900">
             Afmelden
             <i class="ri-logout-box-r-line"></i>
           </a>
@@ -173,7 +162,7 @@
       <div id="navTabFormulieren"
         class="hidden p-4 justify-center items-center mx-auto text-white">
         <div
-          class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-center items-center mx-auto">
+          class="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center items-center mx-auto">
           <div id="formulierenattestenovereenkomsten" navTab="navTabFormulieren"
             class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-file-list-3-line text-xl"></i>
@@ -183,6 +172,11 @@
             class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-file-copy-line text-xl"></i>
             <span>Formulieren</span>
+          </div>
+          <div id="registrerenvoor" navTab="navTabFormulieren"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-survey-line text-xl"></i>
+            <span>Registreren voor ...</span>
           </div>
         </div>
       </div>
@@ -216,6 +210,11 @@
             class="hover:cursor-pointer flex items-center space-x-2">
             <i class="ri-bar-chart-2-line text-xl"></i>
             <span>Onderwijsevaluatie</span>
+          </div>
+          <div id="burgerprofiel" navTab="navTabStudie"
+            class="hover:cursor-pointer flex items-center space-x-2">
+            <i class="ri-graduation-cap-line text-xl""></i>
+            <span>Studie Krediet</span>
           </div>
         </div>
       </div>
