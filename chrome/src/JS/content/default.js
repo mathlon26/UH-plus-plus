@@ -170,6 +170,9 @@ function english_linkButtons() {}
           // Loop door alle navlink-elementen
           navLinks.forEach((link) => {
             if (link.getAttribute("navlink") === currentTab) {
+              navLinks.forEach((other) => {
+                other.classList.remove("selectedNav");
+              });
               link.classList.add("selectedNav");
               matchFound = true;
             }
@@ -180,10 +183,10 @@ function english_linkButtons() {}
           if (!matchFound || route === "/") {
             const homeElement = document.getElementById("defaultLink");
             if (homeElement) {
-              homeElement.classList.add("selectedNav");
               navLinks.forEach((link) => {
                 link.classList.remove("selectedNav");
               });
+              homeElement.classList.add("selectedNav");
             }
           }
         }
@@ -464,7 +467,10 @@ function english_linkButtons() {}
       let matchFound = false;
       navLinks.forEach((link) => {
         if (link.getAttribute("navlink") === currentTab) {
-          link.classList.add("selectedNav");
+            navLinks.forEach((other) => {
+              other.classList.remove("selectedNav");
+            });
+            link.classList.add("selectedNav");
           matchFound = true;
         }
       });
@@ -473,10 +479,10 @@ function english_linkButtons() {}
       if (!matchFound || route === "/") {
         const homeElement = document.getElementById("defaultLink");
         if (homeElement) {
-          homeElement.classList.add("selectedNav");
           navLinks.forEach((link) => {
             link.classList.remove("selectedNav");
           });
+          homeElement.classList.add("selectedNav");
         }
       }
     }
