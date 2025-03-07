@@ -48,23 +48,18 @@
         
     }
     
-    #login_form .login_text_input::placeholder {
-        font-size: 14pt;
-        border-bottom: 1px solid #808080;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
+
     
-    #studentid {
+    #new_username {
         margin-top: 75px;
     }
-    #password {
+    #new_password {
         margin-top: 29px;
     }
-    #studentid {
+    #new_username {
         margin-top: 30px;
     }
-    #password {
+    #new_password {
         margin-top: 29px;
     }
     .login__container {
@@ -90,9 +85,6 @@
     }
     #login_form a{
         text-decoration: underline;
-    }
-    #login_form p {
-        margin-top: 62px;
     }
     
     #login_form button {
@@ -123,34 +115,84 @@
             margin-top: 14px;
         }
     }
+    .floating-label {
+        position: relative;
+        margin-top: 30px;
+    }
+    
+    .floating-label input {
+        width: 283px;
+        height: 56px;
+        border: none;
+        border-radius: 25px;
+        padding: 1rem;
+        background: none;
+        font-size: 14pt;
+        transition: border-color 0.3s;
+    }
+    
+    .floating-label label {
+        position: absolute;
+        left: 20px;
+        top: 26px;
+        transform: translateY(-50%);
+        transition: all 0.2s ease;
+        color: #808080;
+        pointer-events: none;
+    }
+    
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label {
+        top: -15px;
+        left: 0;
+        font-size: 12pt;
+        color: #ff0000;
+        padding: 0 5px;
+    }
+
+    #placeholder  {
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .drop-shadow {
+        box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.25);
+        }
+
+    .drop-shadow-100 {
+        box-shadow: 0 8px 4px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .inner-shadow {
+        box-shadow: inset 0 -6px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+    
 </style>
-<div id="login_____container" class="login-container-main h-screen w-screen flex items-center justify-center text-center mx-auto"> <!--background-image: url('{{asset('/img/auth-bg.png')}}');-->
+<div class="absolute top-8 left-8 w-screen  ">
+    <a class="mt-4 p-4 rounded-xl drop-shadow bg-white transition-colors duration-150 font-bold text-gray-900 hover:text-red-600" href="https://www.uhasselt.be">Home Pagina</a>
+</div>
+<div id="login_____container" class="login-container-main h-screen w-screen flex items-center justify-center text-center mx-auto"> 
+   
     <div class="container | drop-shadow-100 | login__container mx-auto justify-center align-middle">
-        <style>
-            .drop-shadow {
-            box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.25);
-            }
-
-            .drop-shadow-100 {
-            box-shadow: 0 8px 4px 2px rgba(0, 0, 0, 0.25);
-            }
-
-            .inner-shadow {
-            box-shadow: inset 0 -6px 4px 0 rgba(0, 0, 0, 0.25);
-            }
-        </style>
         <form id="login_form" action="authenticate" method="post">
             <img id="loginLogo" src="https://www.uhasselt.be/media/tk4a3sbh/uhasselt-standaard.png?width=363&height=261&mode=max" alt="Logo">
-            <input placeholder="Student-ID" name="studentid" autocomplete="username" class="login_text_input drop-shadow" value="" type="text" id="studentid">
-            <input placeholder="Wachtwoord" name="password" autocomplete="current-password" class="login_text_input drop-shadow" type="password" id="password">
+            <div class="floating-label">
+                <input placeholder=" " name="new_username" autocomplete="username" class="login_text_input drop-shadow" value="" type="text" id="new_username">
+                <label for="new_username">Student-ID</label>
+            </div>
+            <div class="floating-label">
+                <input placeholder=" " name="new_password" autocomplete="current-password" class="login_text_input drop-shadow" type="password" id="new_password">
+                <label for="new_password">Wachtwoord</label>
+            </div>
             <label for="publicChecker">Dit is een publieke computer</label>
-            <input id="publicChecker" class="text-red-500 bg-red-500" type="checkbox">
+            <input id="publicChecker" class="w-4 h-4 text-red-500 bg-red-500" type="checkbox">
             
-            <p>Student-ID of wachtwoord vergeten? <br>Klik <a class="text-red-500" href="">hier</a>.</br></p>
+            <p class="pt-8 pb-2">Student-ID of wachtwoord vergeten? Klik <a class="text-red-500" href="https://recovery.uhasselt.be/">hier</a>.</p>
+            <p>Account activeren? Klik <a class="text-red-500" href="https://activate.uhasselt.be/">hier</a>.</p>
             
-            <button name="login" type="submit" class="inner-shadow bg-red-500 hover:bg-red-700 text-white">Login</button>
+            
+            <button name="_eventId_proceed" type="submit" class="inner-shadow bg-red-500 hover:bg-red-700 text-white">Login</button>
         </form>
 
-        <script></script>
     </div>
 </div>

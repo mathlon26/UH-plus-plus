@@ -17,7 +17,7 @@ function loadStudentData(callback1, callback2) {
 }
 
 function updateSettings(callback) {
-  let lang = studentData.Taal === "01" ? "nl" : "en";
+  let lang = studentData.Taal === "04" ? "en" : "nl";
   chrome.runtime.sendMessage(
     { action: "POST::settings", key: "lang", value: lang },
     (response) => {
@@ -319,6 +319,32 @@ function english_linkButtons() {}
       );
     }
 
+    function loadExamenCijfersContent() {
+      chrome.runtime.sendMessage(
+        {
+          action: "GET::html",
+          page: "examencijfers",
+          lang: settings_global.lang,
+        },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
+
+            /*
+            
+            cijfers: {
+              <opleiding>: [
+                <onderdeel>:
+              ]
+            }
+            
+            */
+
+          }
+        }
+      );
+    }
+
     function loadPersoonlijkeGegevensContent() {
       chrome.runtime.sendMessage(
         {
@@ -524,7 +550,7 @@ function english_linkButtons() {}
           loadStudieGeldContent();
           break;
         case "/sdsExCijf.aspx":
-          updateNavigationTab("navTabAdministratie");
+          updateNavigationTab("navTabExamens");
           loadExamenCijfersContent();
           break;
         case "/sdsVerklaringOpEerDigex.aspx":
@@ -729,6 +755,6 @@ function english_linkButtons() {}
 
 (() => {
   function DEBUG() {}
-
+  console.log(studentData);
   DEBUG();
 })();
