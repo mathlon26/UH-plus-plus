@@ -319,6 +319,21 @@ function english_linkButtons() {}
       );
     }
 
+    function loadExamenCijfersContent() {
+      chrome.runtime.sendMessage(
+        {
+          action: "GET::html",
+          page: "examencijfers",
+          lang: settings_global.lang,
+        },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
+          }
+        }
+      );
+    }
+
     function loadPersoonlijkeGegevensContent() {
       chrome.runtime.sendMessage(
         {
@@ -524,7 +539,7 @@ function english_linkButtons() {}
           loadStudieGeldContent();
           break;
         case "/sdsExCijf.aspx":
-          updateNavigationTab("navTabAdministratie");
+          updateNavigationTab("navTabExamens");
           loadExamenCijfersContent();
           break;
         case "/sdsVerklaringOpEerDigex.aspx":
