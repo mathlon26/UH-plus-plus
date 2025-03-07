@@ -68,14 +68,16 @@ let student_data = {};
     } else {
       chrome.runtime.sendMessage({action: "GET::profile_data"}, (response) => {
         response.src = `https://mijnstudentendossier.uhasselt.be${response.src}`;
-        chrome.runtime.sendMessage({action: "POST::settings", key: 'student_card', value: response});
+        chrome.runtime.sendMessage({action: "POST::settings", key: 'student_card', value: response}, (response) => {
+          document.getElementById("sc-name").innerText = `${student_data.Voornaam} ${student_data.Naam}`;
+          document.getElementById("usernameDisplay").innerText = `${student_data.Voornaam} ${student_data.Naam}`;
+          document.getElementById("sc-nummer").innerText = student_data.Stamnummer;
+          setStudentCardPlaceholders();
+        });
       });
     }
 
-    document.getElementById("sc-name").innerText = `${student_data.Voornaam} ${student_data.Naam}`;
-    document.getElementById("usernameDisplay").innerText = `${student_data.Voornaam} ${student_data.Naam}`;
-    document.getElementById("sc-nummer").innerText = student_data.Stamnummer;
-    setStudentCardPlaceholders();
+    
   }
 
   function initPopup() {
