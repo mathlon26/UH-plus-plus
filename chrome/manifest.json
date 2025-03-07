@@ -10,11 +10,24 @@
       "48": "src/resources/images/icon-48.png",
       "128": "src/resources/images/icon-128.png"
     },
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "src/resources/images/auth-bg.png"
+        ],
+        "matches": ["*://idp.uhasselt.be/*"]
+      }
+    ],
     "content_scripts": [
       {
         "js": ["src/JS/content/default.js"],
         "css": ["src/CSS/compiled.css"],
         "matches": ["*://mijnstudentendossier.uhasselt.be/*"]
+      },
+      {
+        "js": ["src/JS/content/login.js"],
+        "css": ["src/CSS/compiled.css"],
+        "matches": ["*://idp.uhasselt.be/*"]
       }
     ],
     "options_page": "src/pages/settings.html",

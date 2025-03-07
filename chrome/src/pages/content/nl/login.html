@@ -1,0 +1,156 @@
+<style>
+    .login-container-main {
+        background-size: cover;
+        background-attachment: fixed;
+        max-height: calc(100vh - var(--nav-height));
+        min-height: calc(100vh - var(--nav-height));;
+        overflow: hidden;
+    }
+    
+    #goBack {
+        max-height: 100px;
+        background-color: white;
+        font-size: 25pt;
+        font-weight: 600;
+        padding: 10px;
+        margin: 30px 0px 0px 30px;
+        max-width: 350px;
+        line-height: 1;
+        text-align: end;
+        border-radius: 0px 50px 50px 0px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .goBack-img {
+        height: 100%;
+        padding: 5px 0px 5px 5px ;
+    }
+    
+    .goBack-container {
+        display: flex;
+    }
+    
+    #login_form .login_text_input {
+        height: 56px;
+        width: 283px;
+        border: none;
+        border-radius: 16px;
+        outline: none;
+        background: none;
+        padding: 0.6rem 1.2rem;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        border-radius: 25px;
+        transition: 0.3s;
+        
+    }
+    
+    #login_form .login_text_input::placeholder {
+        font-size: 14pt;
+        border-bottom: 1px solid #808080;
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+    
+    #studentid {
+        margin-top: 75px;
+    }
+    #password {
+        margin-top: 29px;
+    }
+    #studentid {
+        margin-top: 30px;
+    }
+    #password {
+        margin-top: 29px;
+    }
+    .login__container {
+        background-color: white;
+        border-radius: 46px;
+        max-width: 390px;
+        max-height: 735;
+        padding: 20px 46px 46px 46px;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    #login_form {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    #login_form img {
+        height: 140px;
+    }
+    #login_form a{
+        text-decoration: underline;
+    }
+    #login_form p {
+        margin-top: 62px;
+    }
+    
+    #login_form button {
+        margin-top: 31px;
+        border: none;
+        width: 328px;
+        height: 62px;
+        border-radius: 16px;
+        font-size: 16pt;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    
+    #login_form button:hover {
+        cursor: pointer;
+    }
+    
+    #login_form label{
+        margin-top: 30px;
+        padding-right: 5px;
+    }
+    #publicChecker {
+        margin-top: 36px;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .login__container {
+            margin-top: 14px;
+        }
+    }
+</style>
+<div id="login_____container" class="login-container-main h-screen w-screen flex items-center justify-center text-center mx-auto"> <!--background-image: url('{{asset('/img/auth-bg.png')}}');-->
+    <div class="container | drop-shadow-100 | login__container mx-auto justify-center align-middle">
+        <style>
+            .drop-shadow {
+            box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.25);
+            }
+
+            .drop-shadow-100 {
+            box-shadow: 0 8px 4px 2px rgba(0, 0, 0, 0.25);
+            }
+
+            .inner-shadow {
+            box-shadow: inset 0 -6px 4px 0 rgba(0, 0, 0, 0.25);
+            }
+        </style>
+        <form id="login_form" action="authenticate" method="post">
+            <img id="loginLogo" src="https://www.uhasselt.be/media/tk4a3sbh/uhasselt-standaard.png?width=363&height=261&mode=max" alt="Logo">
+            <input placeholder="Student-ID" name="studentid" autocomplete="username" class="login_text_input drop-shadow" value="" type="text" id="studentid">
+            <input placeholder="Wachtwoord" name="password" autocomplete="current-password" class="login_text_input drop-shadow" type="password" id="password">
+            <label for="publicChecker">Dit is een publieke computer</label>
+            <input id="publicChecker" class="text-red-500 bg-red-500" type="checkbox">
+            
+            <p>Student-ID of wachtwoord vergeten? <br>Klik <a class="text-red-500" href="">hier</a>.</br></p>
+            
+            <button name="login" type="submit" class="inner-shadow bg-red-500 hover:bg-red-700 text-white">Login</button>
+        </form>
+
+        <script></script>
+    </div>
+</div>
