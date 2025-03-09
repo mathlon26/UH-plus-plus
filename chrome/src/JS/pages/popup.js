@@ -55,16 +55,17 @@ let student_data = {};
   }
 
   function setStudentCardPlaceholders() {
-    document.getElementById("student-img").src = settings_global.student_card.src;
-    console.log(settings_global.student_card);
-    document.getElementById("sc-birthdate").innerText = settings_global.student_card.dob;
-    document.getElementById("sc-bottom").innerText = settings_global.student_card.uh;
-    document.getElementById("barcode-img").src = settings_global.student_card.barcode_src;
+    document.getElementById("student-img").src = settings_global.student_card.src || "https://www.perfectpassportphotos.com/img/img_placeholder_avatar.jpg";
+    document.getElementById("sc-birthdate").innerText = settings_global.student_card.dob || "xx.xx.xxxx";
+    console.log(settings_global.student_card.dob);
+    document.getElementById("sc-nummer").innerText = settings_global.student_data.Stamnummer || "xxxxxxx";
+    document.getElementById("sc-bottom").innerText = settings_global.student_card.uh || "UHxxxxxxx";
+    document.getElementById("barcode-img").src = settings_global.student_card.barcode_src || "";
     document.getElementById("barcode").innerText = settings_global.student_card.barcode;
   }
 
   function initStudentCard() {
-    if (settings_global.student_card) {
+    if (settings_global.student_card && settings_global.student_card.dob) {
       setStudentCardPlaceholders();
     } else {
       chrome.runtime.sendMessage({action: "GET::profile_data"}, (response) => {
