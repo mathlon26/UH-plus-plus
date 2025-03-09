@@ -1,5 +1,4 @@
 var studentData = {};
-const DEBUG = true;
 let settings_global = {};
 
 function loadStudentData(callback1, callback2) {
@@ -11,7 +10,6 @@ function loadStudentData(callback1, callback2) {
     }
   });
   chrome.runtime.sendMessage({action: "POST::settings", key: "student_data", value: studentData}, (response) => {
-    console.log(studentData);
     callback1(callback2);
   });
 }
@@ -578,6 +576,18 @@ function english_linkButtons() {}
       }
     }
 
+    function loadDefaultFallback() {
+      chrome.runtime.sendMessage(
+        { action: "GET::html", page: "fallback", lang: settings_global.lang },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
+            document.getElementById("student_username").innerText = `${studentData.Voornaam} ${studentData.Naam}` || "student";
+          }
+        }
+      );
+    }
+
     function loadContent() {
       const route = window.location.pathname;
 
@@ -588,11 +598,13 @@ function english_linkButtons() {}
           break;
         case "/sdsBurgeprofiel.aspx":
           updateNavigationTab("navTabGegevens");
-          loadBurgeprofielContent();
+          // loadBurgeprofielContent();
+          loadDefaultFallback();
           break;
         case "/sdsAanvraagStudietraject.aspx":
           updateNavigationTab("navTabAdministratie");
-          loadAanvraagStudieTrajectContent();
+          // loadAanvraagStudieTrajectContent();
+          loadDefaultFallback();
           break;
         case "/sdsTotOverIndTra.aspx":
           updateNavigationTab("navTabAdministratie");
@@ -600,7 +612,8 @@ function english_linkButtons() {}
           break;
         case "/sdsStudiecontract.aspx":
           updateNavigationTab("navTabAdministratie");
-          loadStudieContract();
+          // loadStudieContract();
+          loadDefaultFallback();
           break;
         case "/sdsUitschrijven.aspx":
           updateNavigationTab("navTabAdministratie");
@@ -608,19 +621,23 @@ function english_linkButtons() {}
           break;
         case "/sdsAantalKeerOpgenomen.aspx":
           updateNavigationTab("navTabAdministratie");
-          loadInschrijvingsLimietContent();
+          // loadInschrijvingsLimietContent();
+          loadDefaultFallback();
           break;
         case "/sdsInschrijvingsgeld.aspx":
           updateNavigationTab("navTabAdministratie");
-          loadStudieGeldContent();
+          // loadStudieGeldContent();
+          loadDefaultFallback();
           break;
         case "/sdsExCijf.aspx":
           updateNavigationTab("navTabExamens");
-          loadExamenCijfersContent();
+          // loadExamenCijfersContent();
+          loadDefaultFallback();
           break;
         case "/sdsVerklaringOpEerDigex.aspx":
           updateNavigationTab("navTabExamens");
-          loadVerklaringOnlineExamenContent();
+          // loadVerklaringOnlineExamenContent();
+          loadDefaultFallback();
           break;
         case "/sdsPersGeg.aspx":
           updateNavigationTab("navTabGegevens");
@@ -628,51 +645,63 @@ function english_linkButtons() {}
           break;
         case "/sdsPrivacy.aspx":
           updateNavigationTab("navTabGegevens");
-          loadPrivacyContent();
+          // loadPrivacyContent();
+          loadDefaultFallback();
           break;
         case "/sdsstudentenkaart.aspx":
           updateNavigationTab("navTabGegevens");
-          loadStudentenKaartContent();
+          // loadStudentenKaartContent();
+          loadDefaultFallback();
           break;
         case "/sdsEID.aspx":
           updateNavigationTab("navTabGegevens");
-          loadEIDContent();
+          // loadEIDContent();
+          loadDefaultFallback();
           break;
         case "/sdsDocumentenStudSecr.aspx":
           updateNavigationTab("navTabFormulieren");
-          loadFormulierenAttestenContent();
+          // loadFormulierenAttestenContent();
+          loadDefaultFallback();
           break;
         case "/sdsDocumenten.aspx":
           updateNavigationTab("navTabFormulieren");
-          loadFormulierenContent();
+          // loadFormulierenContent();
+          loadDefaultFallback();
           break;
         case "/sdsLoopbaan.aspx":
           updateNavigationTab("navTabStudie");
-          loadLoopbaanContent();
+          // loadLoopbaanContent();
+          loadDefaultFallback();
           break;
         case "/sdsStudentPoint.aspx":
           updateNavigationTab("navTabStudie");
-          loadStudentPointContent();
+          // loadStudentPointContent();
+          loadDefaultFallback();
           break;
         case "/sdsBijzondereOmstandigheid.aspx":
           updateNavigationTab("navTabStudie");
-          loadBijzondereOmstandighedenContent();
+          // loadBijzondereOmstandighedenContent();
+          loadDefaultFallback();
           break;
         case "/sdsMededelingen.aspx":
           updateNavigationTab("navTabStudie");
-          loadMeldingenContent();
+          // loadMeldingenContent();
+          loadDefaultFallback();
           break;
         case "/sdsLicentie.aspx":
           updateNavigationTab("navTabTools");
-          loadSoftwareContent();
+          // loadSoftwareContent();
+          loadDefaultFallback();
           break;
         case "/sdsJobstudentenPortaal.aspx":
           updateNavigationTab("navTabWerk");
-          loadJobstudentContent();
+          // loadJobstudentContent();
+          loadDefaultFallback();
           break;
         case "/sdsActiviteitenStudNieuw.aspx?activiteit=STARTUP":
           updateNavigationTab("navTabWerk");
-          loadStartUpContent();
+          // loadStartUpContent();
+          loadDefaultFallback();
           break;
         case "/Shibboleth.sso/Logout":
           loadLogout();
@@ -816,10 +845,4 @@ function english_linkButtons() {}
   //  make settings global
   // First: Remove the default styles and hide the websites content, replace it with the custom html
   loadStudentData(updateSettings, initDefaultWebFunctionality);
-})();
-
-(() => {
-  function DEBUG() {}
-  console.log(studentData);
-  DEBUG();
 })();
