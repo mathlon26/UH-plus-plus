@@ -326,18 +326,172 @@ function english_linkButtons() {}
         },
         (response) => {
           if (response.html) {
+            // Vul de placeholder met de opgehaalde HTML
             placeholder.innerHTML = response.html;
-
-            /*
             
-            cijfers: {
-              <opleiding>: [
-                <onderdeel>:
-              ]
+            // --- Begin transformation code ---
+            const lblExCijf = document.getElementById("lblExCijf");
+            const modernTableContainer = document.getElementById("modernTable");
+            
+            if (lblExCijf && modernTableContainer) {
+              // Zoek naar alle table-elementen in de container.
+              const tables = lblExCijf.getElementsByTagName("table");
+              // Gebruik de tweede tabel als deze beschikbaar is, anders de eerste.
+              let oldTable = tables[1] || tables[0];
+              
+              if (!oldTable) {
+                console.error("Geen tabel gevonden in lblExCijf.");
+                return;
+              }
+              
+              // Maak een nieuwe table met Tailwind CSS classes.
+              const newTable = document.createElement("table");
+              newTable.className = "min-w-full divide-y divide-gray-200 border border-gray-200";
+              
+              const newTbody = document.createElement("tbody");
+              
+              // Haal alle rijen uit de oude tabel.
+              const rows = oldTable.querySelectorAll("tr");
+              // Itereer over alle rijen, maar sla de laatste over.
+              for (let i = 0; i < rows.length - 1; i++) {
+                const row = rows[i];
+                const newRow = document.createElement("tr");
+                // Afwisselende achtergrondkleuren.
+                newRow.className = i % 2 === 0 ? "bg-white" : "bg-gray-50";
+                
+                // Verwerk elke cel (th of td) in de rij.
+                row.querySelectorAll("th, td").forEach((cell) => {
+                  const tag = cell.tagName.toLowerCase();
+                  const newCell = document.createElement(tag);
+                  newCell.className = "px-4 py-2 border border-gray-200 text-sm text-gray-700";
+                  newCell.innerHTML = cell.innerHTML;
+                  
+                  // Kopieer de colspan attribute indien aanwezig.
+                  const colspan = cell.getAttribute("colspan");
+                  if (colspan) {
+                    newCell.setAttribute("colspan", colspan);
+                  }
+                  
+                  // Als dit de nieuwe laatste rij is (voorlaatste van de originele tabel)
+                  // en de cel bevat content, voeg dan een zwarte bovenrand toe.
+                  if (i === rows.length - 2 && newCell.innerHTML.trim() !== "&nbsp;") {
+                    newCell.classList.add("border-t-2", "border-black");
+                    newCell.classList.remove("border", "border-gray-200");
+
+                  }
+                  
+                  newRow.appendChild(newCell);
+                });
+                newTbody.appendChild(newRow);
+              }
+              
+              newTable.appendChild(newTbody);
+              // Maak de container leeg en voeg de nieuwe tabel toe.
+              modernTableContainer.innerHTML = "";
+              modernTableContainer.appendChild(newTable);
             }
-            
-            */
+            // --- End transformation code ---
 
+            // Zoek de oude tabel op basis van de inline styles.
+            const oldVoorwaardenTable = document.querySelectorAll("#lblCode table")[2];
+            const tableCell = oldVoorwaardenTable.querySelector("td");
+            const headings = tableCell.querySelectorAll("b");
+
+            // Maak een nieuw container element voor de inhoud.
+            const newContainer = document.createElement("div");
+            // Tailwind classes voor mooie layout
+            newContainer.className = "p-6 bg-white shadow-md rounded-md space-y-8";
+
+            // Loop over alle <b>-elementen om secties te bouwen.
+            // We nemen aan dat de tekst tot aan de volgende <b> hoort bij de huidige sectie.
+            headings.forEach((heading, idx) => {
+              // Maak een nieuw element voor de sectie
+              const sectionDiv = document.createElement("div");
+              sectionDiv.className = "mb-8";
+
+              // Titel (kopje) in een h2
+              const sectionTitle = document.createElement("h2");
+              sectionTitle.className = "text-xl font-bold text-gray-800";
+              sectionTitle.textContent = heading.innerText.trim();
+              sectionDiv.appendChild(sectionTitle);
+
+              // Verzamel de content die tussen dit <b> en het volgende <b> staat
+              let next = heading.nextSibling;
+              const contentNodes = [];
+              while (
+                next &&
+                // Stop als we een nieuw <b>-element of <b>-parent bereiken
+                !(next.nodeType === 1 && next.tagName === "B")
+              ) {
+                contentNodes.push(next);
+                next = next.nextSibling;
+              }
+
+              // Bouw een container voor de sectietekst
+              const contentWrapper = document.createElement("div");
+              contentWrapper.className = "text-gray-700 leading-relaxed space-y-3";
+
+              // Voeg alle losse nodes (p, ul, br, text, etc.) toe
+              contentNodes.forEach((node) => {
+                if (node.nodeName != "BR") {
+                  contentWrapper.appendChild(node.cloneNode(true));
+                }
+              });
+
+              // Voeg de sectietekst toe aan de sectie
+              sectionDiv.appendChild(contentWrapper);
+
+              // Voeg de sectie toe aan de nieuwe container
+              newContainer.appendChild(sectionDiv);
+            });
+
+            // Plaats de nieuwe container in #voorwaarden
+            const voorwaardenDiv = document.getElementById("voorwaarden");
+            if (!voorwaardenDiv) {
+              console.error("#voorwaarden niet gevonden.");
+              return;
+            }
+
+            voorwaardenDiv.innerHTML = ""; // Maak leeg voor de nieuwe content
+            voorwaardenDiv.appendChild(newContainer);
+
+             // Zoek de span met de geraadpleegde datetimes
+            const raadpleegSpan = document.getElementById("lblRaadpleegExCijf");
+            // Zoek de placeholder div voor de activiteit
+            const activiteitDiv = document.getElementById("activiteit");
+
+
+            // Zoek de <ul> binnen de span
+            const ul = raadpleegSpan.querySelector("ul");
+            if (!ul) {
+              activiteitDiv.textContent = "Geen activiteit data gevonden.";
+              return;
+            }
+
+            // Haal alle <li> elementen op
+            const liItems = ul.querySelectorAll("li");
+
+            // Maak een nieuwe <ul> aan voor de geformatteerde lijst
+            const newList = document.createElement("ul");
+            newList.className = "list-none list-inside space-y-2 max-w-48";
+
+            // Loop door alle items en maak voor elk een nieuwe <li> met TailwindCSS styling
+            liItems.forEach(li => {
+              const newLi = document.createElement("li");
+              const newSpan = document.createElement("span");
+              newSpan.classList.add("text-white", "text-center");
+              newSpan.textContent = li.textContent.trim();
+              newLi.className = "bg-red-600 bg-opacity-50 p-2 rounded shadow flex";
+              const icon = document.createElement("li");
+              icon.classList.add("ri-eye-fill","text-white", "mr-2");
+              newLi.appendChild(icon);
+              newLi.appendChild(newSpan);
+              newList.appendChild(newLi);
+            });
+
+            // Voeg de nieuwe lijst toe aan de placeholder
+            activiteitDiv.innerHTML = "";
+            activiteitDiv.appendChild(newList);
           }
         }
       );
@@ -631,8 +785,7 @@ function english_linkButtons() {}
           break;
         case "/sdsExCijf.aspx":
           updateNavigationTab("navTabExamens");
-          // loadExamenCijfersContent();
-          loadDefaultFallback();
+          loadExamenCijfersContent();
           break;
         case "/sdsVerklaringOpEerDigex.aspx":
           updateNavigationTab("navTabExamens");
