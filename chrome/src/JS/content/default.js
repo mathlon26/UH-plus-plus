@@ -477,12 +477,23 @@ function english_linkButtons() {}
     }
 
     function loadLogout() {
-      const body = document.getElementsByTagName("body")[0];
+      const body = document.body;
       chrome.runtime.sendMessage(
         { action: "GET::html", page: "logout", lang: settings_global.lang },
         (response) => {
           if (response.html) {
             body.innerHTML = response.html;
+          }
+        }
+      );
+    }
+
+    function loadUitschrijvenOpleidingContent() {
+      chrome.runtime.sendMessage(
+        { action: "GET::html", page: "uitschrijven", lang: settings_global.lang },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
           }
         }
       );

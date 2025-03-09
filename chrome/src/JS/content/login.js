@@ -85,9 +85,5 @@ let settings_global = {};
         loadHTML();
       }
     })
-
-
-    
-
     
 })()

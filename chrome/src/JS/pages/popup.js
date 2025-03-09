@@ -56,6 +56,7 @@ let student_data = {};
 
   function setStudentCardPlaceholders() {
     document.getElementById("student-img").src = settings_global.student_card.src;
+    console.log(settings_global.student_card);
     document.getElementById("sc-birthdate").innerText = settings_global.student_card.dob;
     document.getElementById("sc-bottom").innerText = settings_global.student_card.uh;
     document.getElementById("barcode-img").src = settings_global.student_card.barcode_src;
