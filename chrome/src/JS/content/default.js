@@ -499,6 +499,60 @@ function english_linkButtons() {}
       );
     }
 
+    function loadOpleidingsOnderdelenContent() {
+      chrome.runtime.sendMessage(
+        { action: "GET::html", page: "opleidingsonderdelen", lang: settings_global.lang },
+        (response) => {
+          if (response.html) {
+            placeholder.innerHTML = response.html;
+
+            const stamnummer = document.getElementById('lblStamnummer')?.innerText || '';
+            const studentNaam = document.getElementById('lblStudent')?.innerText || '';
+
+            // Vul de studentinfo in het nieuwe blok
+            const studentInfoDiv = document.getElementById('studentInfo');
+            if (studentInfoDiv) {
+              studentInfoDiv.textContent = stamnummer + ' - ' + studentNaam;
+            }
+
+            // Selecteer alle rijen (body en alter2) uit de oude tabel
+            const oudeRijen = document.querySelectorAll('#Table1 tr.body, #Table1 tr.alter2');
+            const nieuweTbody = document.getElementById('opleidingsonderdelenBody');
+
+            // Loop over de rijen en vul onze nieuwe tabel
+            oudeRijen.forEach((rij) => {
+              const cellen = rij.querySelectorAll('td');
+              if (cellen.length >= 9) {
+                const academiejaar            = cellen[0].innerText.trim();
+                const studieprogramma         = cellen[1].innerText.trim();
+                const opleidingsonderdeelHTML = cellen[3].innerHTML.trim();
+                const studiepunten            = cellen[4].innerText.trim();
+                const eersteKans              = cellen[5].innerText.trim();
+                const tweedeKans              = cellen[6].innerText.trim();
+                const resultaat               = cellen[7].innerText.trim();
+
+                // Maak een nieuwe rij in de nieuwe tabel
+                const nieuweRij = document.createElement('tr');
+                nieuweRij.innerHTML = `
+                  <td class="border-b border-gray-200 py-2 px-4">${academiejaar}</td>
+                  <td class="border-b border-gray-200 py-2 px-4">${studieprogramma}</td>
+                  <td class="border-b border-gray-200 py-2 px-4">${opleidingsonderdeelHTML}</td>
+                  <td class="border-b border-gray-200 py-2 px-4">${studiepunten}</td>
+                  <td class="border-b border-gray-200 py-2 px-4">${eersteKans}</td>
+                  <td class="border-b border-gray-200 py-2 px-4">${tweedeKans}</td>
+                  <td class="border-b border-gray-200 py-2 px-4">${resultaat}</td>
+                `;
+
+                // Voeg de nieuwe rij toe aan de nieuwe tabel-body
+                nieuweTbody.appendChild(nieuweRij);
+              }
+            });
+
+          }
+        }
+      );
+    }
+
     function updateNavigationTab(currentTab) {
       const navLinks = document.querySelectorAll("[navlink]");
       let matchFound = false;
