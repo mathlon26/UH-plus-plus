@@ -1,18 +1,17 @@
-<div class="mx-auto">
-    <div class=" max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-6 my-8">
-        <div class="flex justify-between">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Examencijfers</h2>
+<div class="container mx-auto px-4">
+    <div class="bg-white max-w-6xl mx-auto shadow-lg rounded-xl p-6 my-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 sm:mb-0">Examencijfers</h2>
             <a href="javascript: vul('ExamenCijfer','UHoar11_2014_MSD');"
                 class="m-2 px-5 py-2 flex items-center gap-2 text-white bg-red-600 hover:bg-red-700 transition duration-300 rounded-lg shadow-md">
                 <i class="ri-download-cloud-fill text-xl"></i>
                 <span class="font-medium">Download Rapport</span>
             </a>
-
         </div>
         <div id="modernTable" class="overflow-x-auto">
         </div>
-        <h2 class="text-xl font-semibold my-4">Legenda</h2>
-        <div class="flex gap-6 justify-between">
+        <h2 class="text-xl font-semibold my-4 text-center">Legenda</h2>
+        <div class="flex flex-col md:flex-row gap-6 justify-evenly">
             <div>
                 <p class="font-semibold">Cijferstatus</p>
                 <ul class="mt-2 space-y-1 text-gray-700">
@@ -46,32 +45,31 @@
             </div>
         </div>
     </div>
+  
     <div class="max-w-6xl mx-auto bg-red-500 rounded-xl p-6 my-8">
         <h2 class="text-2xl font-bold text-white mb-4">Belangrijke Info</h2>
-        <div id="voorwaarden" class="text-gray-700 leading-relaxed space-y-4">
+        <div id="voorwaarden" class="text-gray-100 leading-relaxed space-y-4">
         </div>
     </div>
-    
+  
     <div class="mx-auto w-fit bg-red-500 rounded-xl p-6 my-8">
         <h2 class="text-2xl font-bold text-white mb-4">Activiteit</h2>
         <style>
-            /* Webkit (Chrome, Safari) scrollbar styling */
             #activiteit::-webkit-scrollbar {
                 width: 8px;
             }
             #activiteit::-webkit-scrollbar-track {
-                background: #EF4444; /* Tailwind red-500 */
+                background: #EF4444; 
             }
             #activiteit::-webkit-scrollbar-thumb {
-                background: #B91C1C; /* Tailwind red-700 */
+                background: #B91C1C; 
                 border-radius: 9999px;
             }
-            /* Firefox scrollbar styling */
             #activiteit {
                 scrollbar-width: thin;
                 scrollbar-color: #B91C1C #EF4444;
             }
-          </style>
+        </style>
         <div class="flex justify-between gap-4">
             <div class="text-gray-700 bg-white leading-relaxed space-y-4 max-w-72 p-4 rounded-2xl">
                 <p class="font-medium">
@@ -84,6 +82,6 @@
             <div id="activiteit" class="text-white pr-2 overflow-y-scroll min-w-52 max-h-[334px] leading-relaxed space-y-4">
             </div>
         </div>
-        
     </div>
-</div>
+  </div>
+  
