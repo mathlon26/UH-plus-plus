@@ -993,7 +993,6 @@ function english_linkButtons() {}
       loadCustomBody();
     }
   }
-
   //  retrieve settings  and  do stuff based on them
   //  make settings global
   // First: Remove the default styles and hide the websites content, replace it with the custom html
