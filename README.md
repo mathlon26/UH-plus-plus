@@ -1,3 +1,7 @@
+# Archived
+The project will be archived since there is no need for this extension anylonger because UHasselt will be updateing their website themselfs in the following year(s).
+
+
 # UHasselt Plus Plus
 UHasselt Plus Plus is a plugin that aims to update mijnstudentendosier.uhasselt.be to look more modern and have modern functionality.
 
